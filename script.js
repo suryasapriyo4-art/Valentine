@@ -1154,11 +1154,46 @@ function revealPhotobox(stepNumber) {
     }
 }
 
+function closePhotobox() {
+    const startContainer = document.getElementById('photoboxRevealStart');
+    const strip = document.getElementById('photoboxStrip');
+
+    if (strip && startContainer) {
+        strip.style.opacity = '0';
+        strip.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+            strip.style.display = 'none';
+            strip.style.opacity = '1'; // Reset for next reveal
+            strip.style.transform = 'translateY(0)';
+
+            startContainer.style.display = 'block';
+            setTimeout(() => {
+                startContainer.style.opacity = '1';
+                startContainer.style.transform = 'scale(1)';
+            }, 50);
+
+            // Reset all frames and buttons for next time
+            const frames = document.querySelectorAll('.photo-frame-item');
+            frames.forEach(f => f.classList.remove('revealed'));
+
+            const nextBtns = document.querySelectorAll('.next-photo-btn');
+            nextBtns.forEach(btn => {
+                btn.style.display = 'block';
+                btn.style.opacity = '1';
+            });
+
+            showCuteBadge('✨ Nanti lihat lagi ya! 💕');
+        }, 400);
+    }
+}
+
 // Make functions globally available
 window.revealLetterStep = revealLetterStep;
 window.revealLyricsStep = revealLyricsStep;
 window.revealWish = revealWish;
 window.revealPhotobox = revealPhotobox;
+window.closePhotobox = closePhotobox;
 
 // ===== Initialize when DOM is ready =====
 document.addEventListener('DOMContentLoaded', () => {

@@ -2872,3 +2872,28 @@ body {
         gap: 60px;
     }
 }
+
+.close-photobox-btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 10px;
+    background: transparent;
+    color: #b76e79;
+    border: 1px solid rgba(183, 110, 121, 0.3);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.close-photobox-btn:hover {
+    background: rgba(183, 110, 121, 0.05);
+    border-color: #b76e79;
+    transform: translateY(-2px);
+}
+
+.close-photobox-btn span {
+    margin-right: 5px;
+}
