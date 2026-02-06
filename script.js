@@ -1140,7 +1140,7 @@ function revealPhotobox(stepNumber) {
             }
 
             // If it's the last photo, throw some extra confetti
-            if (frameIndex === 4) {
+            if (frameIndex === 8) {
                 setTimeout(triggerLoveCelebration, 500);
             }
         }
