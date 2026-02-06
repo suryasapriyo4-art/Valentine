@@ -1159,21 +1159,27 @@ function closePhotobox() {
     const strip = document.getElementById('photoboxStrip');
 
     if (strip && startContainer) {
-        strip.style.opacity = '0';
-        strip.style.transform = 'translateY(20px)';
+        // Trigger enhanced CSS animation
+        strip.classList.add('closing');
 
         setTimeout(() => {
             strip.style.display = 'none';
-            strip.style.opacity = '1'; // Reset for next reveal
-            strip.style.transform = 'translateY(0)';
+            strip.classList.remove('closing');
 
+            // Show start button with animation
             startContainer.style.display = 'block';
+            startContainer.style.opacity = '0';
+            startContainer.style.transform = 'scale(0.8)';
+
             setTimeout(() => {
                 startContainer.style.opacity = '1';
                 startContainer.style.transform = 'scale(1)';
+                // Scroll back to the section header
+                const pbSection = document.getElementById('photobox');
+                if (pbSection) pbSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 50);
 
-            // Reset all frames and buttons for next time
+            // Comprehensive reset
             const frames = document.querySelectorAll('.photo-frame-item');
             frames.forEach(f => f.classList.remove('revealed'));
 
@@ -1184,7 +1190,7 @@ function closePhotobox() {
             });
 
             showCuteBadge('✨ Nanti lihat lagi ya! 💕');
-        }, 400);
+        }, 500); // Match CSS transition duration
     }
 }
 

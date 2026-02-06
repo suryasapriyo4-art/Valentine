@@ -2874,26 +2874,69 @@ body {
 }
 
 .close-photobox-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     width: fit-content;
-    margin: 20px auto 10px;
-    background: transparent;
-    color: #b76e79;
-    border: 1px solid rgba(183, 110, 121, 0.3);
-    padding: 8px 15px;
+    margin: 30px auto 10px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: #ff6b9d;
+    border: 1px solid rgba(255, 107, 157, 0.2);
+    padding: 12px 28px;
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: var(--font-body);
+    position: relative;
+    overflow: hidden;
+    animation: buttonSoftPulse 3s infinite;
+}
+
+@keyframes buttonSoftPulse {
+    0% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    50% {
+        box-shadow: 0 10px 35px rgba(255, 107, 157, 0.15);
+        border-color: rgba(255, 107, 157, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
 }
 
 .close-photobox-btn:hover {
-    background: rgba(183, 110, 121, 0.05);
-    border-color: #b76e79;
-    transform: translateY(-2px);
+    transform: translateY(-8px) scale(1.05);
+    background: #ff6b9d;
+    color: white;
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.4);
+    border-color: transparent;
 }
 
 .close-photobox-btn span {
-    margin-right: 5px;
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.2));
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.close-photobox-btn:hover span {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Enhanced Strip Animation */
+.photobox-strip {
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.photobox-strip.closing {
+    opacity: 0 !important;
+    transform: translateY(100px) scale(0.8) !important;
+    filter: blur(20px);
+    pointer-events: none;
 }
