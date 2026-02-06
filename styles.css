@@ -2586,3 +2586,289 @@ body {
         padding: 8px 15px;
     }
 }
+
+/* ===== Step-by-Step Reveal & Buttons ===== */
+.reveal-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8e53 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+    transition: var(--transition-bounce);
+    animation: pulse 2s infinite;
+}
+
+.reveal-btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+}
+
+.reveal-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+.letter-step,
+.lyrics-step {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.letter-complete-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(183, 110, 121, 0.1);
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: #b76e79;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    margin-top: 20px;
+    border: 1px solid rgba(183, 110, 121, 0.2);
+    animation: cutePop 0.5s ease-out;
+}
+
+/* ===== Wishes Reveal Styling ===== */
+.wish-reveal-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+}
+
+.wish-reveal-btn {
+    background: white;
+    border: 2px dashed #ff6b9d;
+    padding: 30px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.wish-reveal-btn:hover {
+    background: #fff5f8;
+    transform: scale(1.05);
+}
+
+.wish-reveal-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: heartBeat 2s infinite;
+}
+
+.wish-next-btn {
+    background: none;
+    border: 1px solid #ff6b9d;
+    color: #ff6b9d;
+    padding: 8px 15px;
+    border-radius: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.wish-next-btn:hover {
+    background: #ff6b9d;
+    color: white;
+}
+
+.wish-card.wish-revealed {
+    display: block !important;
+}
+
+/* ===== Photobox Date Section ===== */
+.photobox-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #fdf5f5 0%, #f5e6e8 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.photobox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.photobox-strip {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2),
+        inset 0 0 50px rgba(183, 110, 121, 0.05);
+    border: 1px solid #eee;
+    width: 340px;
+    position: relative;
+    animation: slideInUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.strip-header,
+.strip-footer {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.strip-holes {
+    display: flex;
+    gap: 80px;
+}
+
+.strip-holes span {
+    width: 15px;
+    height: 15px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.strip-title {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: #ccc;
+    font-weight: 700;
+}
+
+.photobox-frames {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.photo-frame-item {
+    background: #111;
+    padding: 10px;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #222;
+}
+
+.photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(20%) contrast(110%);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-family: var(--font-script);
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.photo-frame-item:hover .photo-caption {
+    transform: translateY(0);
+}
+
+.next-photo-btn {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    background: #ff6b9d;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+}
+
+.final-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d, #ff8e53);
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.final-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: heartBeat 1.5s infinite;
+}
+
+.final-frame p {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.final-date {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    letter-spacing: 2px;
+}
+
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(10px);
+}
+
+.photo-frame-item.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .photobox-strip {
+        width: 280px;
+    }
+
+    .strip-holes {
+        gap: 60px;
+    }
+}

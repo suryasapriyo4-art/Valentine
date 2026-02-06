@@ -919,9 +919,261 @@ function initCuteInteractions() {
     });
 }
 
+// ===== Step-by-Step Reveal Functions =====
+
+// Love Letter Reveal
+function revealLetterStep(stepNumber) {
+    const currentStep = document.getElementById(`letterStep${stepNumber - 1}`);
+    const nextStep = document.getElementById(`letterStep${stepNumber}`);
+
+    if (currentStep && nextStep) {
+        // Hide current step with fade out
+        currentStep.style.opacity = '0';
+        currentStep.style.transform = 'translateY(-20px)';
+
+        setTimeout(() => {
+            currentStep.style.display = 'none';
+
+            // Show next step with animation
+            nextStep.style.display = 'block';
+            nextStep.style.opacity = '0';
+            nextStep.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                nextStep.style.opacity = '1';
+                nextStep.style.transform = 'translateY(0)';
+            }, 50);
+
+            // Create heart burst effect
+            createRevealHeartBurst();
+
+            // Show cute notification
+            if (stepNumber === 2) {
+                showCuteBadge('💕 Terus baca ya sayang 💕');
+            } else if (stepNumber === 3) {
+                showCuteBadge('💖 Hampir selesai! 💖');
+            }
+        }, 400);
+    }
+}
+
+// Lyrics Reveal
+function revealLyricsStep(stepNumber) {
+    const currentStep = document.getElementById(`lyricsStep${stepNumber - 1}`);
+    const nextStep = document.getElementById(`lyricsStep${stepNumber}`);
+
+    if (currentStep && nextStep) {
+        currentStep.style.opacity = '0';
+        currentStep.style.transform = 'translateY(-20px)';
+
+        setTimeout(() => {
+            currentStep.style.display = 'none';
+
+            nextStep.style.display = 'block';
+            nextStep.style.opacity = '0';
+            nextStep.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                nextStep.style.opacity = '1';
+                nextStep.style.transform = 'translateY(0)';
+            }, 50);
+
+            createRevealHeartBurst();
+
+            if (stepNumber === 2) {
+                showCuteBadge('🎵 Melodi cinta kita 🎵');
+            } else if (stepNumber === 3) {
+                showCuteBadge('🎶 Chorus favorit! 🎶');
+            }
+        }, 400);
+    }
+}
+
+// Wishes Reveal
+function revealWish(wishNumber) {
+    // Hide start button if showing first wish
+    if (wishNumber === 1) {
+        const startButton = document.getElementById('wishRevealStart');
+        if (startButton) {
+            startButton.style.opacity = '0';
+            startButton.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                startButton.style.display = 'none';
+            }, 400);
+        }
+    }
+
+    // Show the wish card
+    const wishCard = document.getElementById(`wish${wishNumber}`);
+    if (wishCard) {
+        wishCard.style.display = 'block';
+        wishCard.style.opacity = '0';
+        wishCard.style.transform = 'scale(0.8) translateY(30px)';
+
+        setTimeout(() => {
+            wishCard.classList.add('wish-revealed');
+            wishCard.style.opacity = '1';
+            wishCard.style.transform = 'scale(1) translateY(0)';
+        }, 50);
+
+        // Create special effects
+        createRevealHeartBurst();
+        createConfettiForWish(wishNumber);
+
+        // Show notifications
+        const messages = [
+            '💕 Harapan pertama! 💕',
+            '💖 Rumah kita nanti 💖',
+            '💗 Mimpi bersama 💗',
+            '✨ Semua harapan tersampaikan! ✨'
+        ];
+        if (messages[wishNumber - 1]) {
+            showCuteBadge(messages[wishNumber - 1]);
+        }
+
+        // Scroll to the revealed wish
+        setTimeout(() => {
+            wishCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+    }
+}
+
+// Helper function for heart burst on reveal
+function createRevealHeartBurst() {
+    const hearts = ['💕', '💖', '💗', '💝', '✨', '💫'];
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('span');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.cssText = `
+                position: fixed;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                font-size: ${Math.random() * 20 + 15}px;
+                pointer-events: none;
+                z-index: 9999;
+                animation: burstHeart 1s ease-out forwards;
+                --tx: ${(Math.random() - 0.5) * 300}px;
+                --ty: ${(Math.random() - 0.5) * 300}px;
+            `;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }, i * 50);
+    }
+}
+
+// Confetti for wishes
+function createConfettiForWish(wishNumber) {
+    const confettiSets = [
+        ['💕', '💖', '💗'],  // Love
+        ['🏠', '🌸', '💝'],  // Home
+        ['🌟', '✨', '💫'],  // Future
+        ['🙏', '✨', '💖']   // Blessing
+    ];
+
+    const confetti = confettiSets[wishNumber - 1] || ['💕'];
+
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('span');
+            particle.className = 'confetti';
+            particle.textContent = confetti[Math.floor(Math.random() * confetti.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-20px';
+            particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 4000);
+        }, i * 80);
+    }
+}
+
+// Photobox Reveal
+function revealPhotobox(stepNumber) {
+    const startContainer = document.getElementById('photoboxRevealStart');
+    const strip = document.getElementById('photoboxStrip');
+
+    // Step 1: Show the strip and the first photo
+    if (stepNumber === 1) {
+        if (startContainer) {
+            startContainer.style.opacity = '0';
+            startContainer.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                startContainer.style.display = 'none';
+
+                if (strip) {
+                    strip.style.display = 'block';
+                    // Scroll to the strip
+                    setTimeout(() => {
+                        strip.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+
+                    // Reveal first photo after a short delay
+                    setTimeout(() => revealPhotobox(2), 800);
+                }
+            }, 400);
+        }
+    } else {
+        // Steps 2, 3, 4: Reveal specific photo frames
+        const frameIndex = stepNumber - 1;
+        const currentFrame = document.getElementById(`photoFrame${frameIndex}`);
+
+        if (currentFrame) {
+            currentFrame.classList.add('revealed');
+
+            // Create effects
+            createRevealHeartBurst();
+
+            // Play a cute "click" effect or show badge
+            const messages = [
+                '📸 Momen pertama kita...',
+                '✨ Selalu ceria bersama!',
+                '💖 Bahagia selamanya...',
+                '🎞️ Kenangan yang indah!'
+            ];
+            if (messages[frameIndex - 1]) {
+                showCuteBadge(messages[frameIndex - 1]);
+            }
+
+            // If it's the last photo, throw some extra confetti
+            if (frameIndex === 4) {
+                setTimeout(triggerLoveCelebration, 500);
+            }
+        }
+
+        // Hide previous frame's next button if exists
+        const prevNextBtn = document.getElementById(`nextPhotoBtn${frameIndex}`);
+        if (prevNextBtn) {
+            prevNextBtn.style.opacity = '0';
+            setTimeout(() => prevNextBtn.style.display = 'none', 300);
+        }
+    }
+}
+
+// Make functions globally available
+window.revealLetterStep = revealLetterStep;
+window.revealLyricsStep = revealLyricsStep;
+window.revealWish = revealWish;
+window.revealPhotobox = revealPhotobox;
+
 // ===== Initialize when DOM is ready =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('💕 Happy Valentine\'s Day! 💕');
     console.log('Made with love ❤️');
     console.log('🐻 Cute mode activated! 🌸');
+
+    // Add smooth transitions to step containers
+    const letterSteps = document.querySelectorAll('.letter-step, .lyrics-step');
+    letterSteps.forEach(step => {
+        step.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+
+    const wishCards = document.querySelectorAll('.wish-card');
+    wishCards.forEach(card => {
+        card.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    });
 });

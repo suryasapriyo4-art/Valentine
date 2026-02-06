@@ -166,13 +166,39 @@
                         </div>
                         <h2 class="letter-title">Untuk Yang Terkasih...</h2>
                         <div class="letter-body">
-                            <p>Setiap detik bersamamu adalah keajaiban yang tak ternilai. Kota ini tak akan sama
-                                tanpamu, langit tak akan seindah ini tanpa senyumanmu.</p>
-                            <p>Kau adalah alasan mengapa setiap pagi terasa istimewa, mengapa setiap malam dingin terasa
-                                hangat. Cintaku padamu tak terbatas oleh waktu, tak terhitung oleh kata.</p>
-                            <p>Di hari kasih sayang ini, aku ingin kau tahu bahwa kau adalah segalanya bagiku. Kau
-                                adalah rumah, kau adalah mimpi, kau adalah cinta yang tak pernah ku bayangkan
-                                sebelumnya.</p>
+                            <!-- Step 1 -->
+                            <div class="letter-step" id="letterStep1" style="display: block;">
+                                <p class="letter-paragraph">Setiap detik bersamamu adalah keajaiban yang tak ternilai.
+                                    Kota ini tak akan sama
+                                    tanpamu, langit tak akan seindah ini tanpa senyumanmu.</p>
+                                <button class="reveal-btn" onclick="revealLetterStep(2)">
+                                    <span class="btn-icon">💕</span>
+                                    <span class="btn-text">Baca Selanjutnya</span>
+                                </button>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="letter-step" id="letterStep2" style="display: none;">
+                                <p class="letter-paragraph">Kau adalah alasan mengapa setiap pagi terasa istimewa,
+                                    mengapa setiap malam dingin terasa
+                                    hangat. Cintaku padamu tak terbatas oleh waktu, tak terhitung oleh kata.</p>
+                                <button class="reveal-btn" onclick="revealLetterStep(3)">
+                                    <span class="btn-icon">💖</span>
+                                    <span class="btn-text">Baca Selanjutnya</span>
+                                </button>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="letter-step" id="letterStep3" style="display: none;">
+                                <p class="letter-paragraph">Di hari kasih sayang ini, aku ingin kau tahu bahwa kau
+                                    adalah segalanya bagiku. Kau
+                                    adalah rumah, kau adalah mimpi, kau adalah cinta yang tak pernah ku bayangkan
+                                    sebelumnya.</p>
+                                <div class="letter-complete-badge">
+                                    <span class="badge-icon">💝</span>
+                                    <span class="badge-text">Sampai akhir ya sayang 💕</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="letter-signature">
                             <p>Dengan sepenuh hati,</p>
@@ -212,23 +238,46 @@
                 <div class="lyrics-decoration left">♪</div>
                 <div class="lyrics-decoration right">♫</div>
                 <div class="lyrics-content">
-                    <div class="lyrics-verse" data-aos="fade-up">
-                        <p>Perjalanan melintasi</p>
-                        <p>Kota ini</p>
-                        <p>Dua langit, dua hari</p>
-                        <p>Kau temani aku di sini</p>
+                    <!-- Lyrics Step 1 -->
+                    <div class="lyrics-step" id="lyricsStep1" style="display: block;">
+                        <div class="lyrics-verse" data-aos="fade-up">
+                            <p>Perjalanan melintasi</p>
+                            <p>Kota ini</p>
+                            <p>Dua langit, dua hari</p>
+                            <p>Kau temani aku di sini</p>
+                        </div>
+                        <button class="reveal-btn lyrics-btn" onclick="revealLyricsStep(2)">
+                            <span class="btn-icon">🎵</span>
+                            <span class="btn-text">Lirik Selanjutnya</span>
+                        </button>
                     </div>
-                    <div class="lyrics-verse" data-aos="fade-up">
-                        <p>Jatuh cinta memang manis</p>
-                        <p>Tak mau waktu ini habis</p>
-                        <p>Penuhilah hati ini</p>
-                        <p>Tak lagi sendiri</p>
+
+                    <!-- Lyrics Step 2 -->
+                    <div class="lyrics-step" id="lyricsStep2" style="display: none;">
+                        <div class="lyrics-verse" data-aos="fade-up">
+                            <p>Jatuh cinta memang manis</p>
+                            <p>Tak mau waktu ini habis</p>
+                            <p>Penuhilah hati ini</p>
+                            <p>Tak lagi sendiri</p>
+                        </div>
+                        <button class="reveal-btn lyrics-btn" onclick="revealLyricsStep(3)">
+                            <span class="btn-icon">🎶</span>
+                            <span class="btn-text">Lirik Selanjutnya</span>
+                        </button>
                     </div>
-                    <div class="lyrics-chorus" data-aos="fade-up">
-                        <p>Oh, dengannya, dengan dia</p>
-                        <p>Langkahku sempurna</p>
-                        <p>Jatuh cinta memang manis</p>
-                        <p>Apalagi ada kamu di sini</p>
+
+                    <!-- Lyrics Step 3 -->
+                    <div class="lyrics-step" id="lyricsStep3" style="display: none;">
+                        <div class="lyrics-chorus" data-aos="fade-up">
+                            <p>Oh, dengannya, dengan dia</p>
+                            <p>Langkahku sempurna</p>
+                            <p>Jatuh cinta memang manis</p>
+                            <p>Apalagi ada kamu di sini</p>
+                        </div>
+                        <div class="letter-complete-badge">
+                            <span class="badge-icon">🎼</span>
+                            <span class="badge-text">Lagu kesayangan kita 💕</span>
+                        </div>
                     </div>
                 </div>
                 <div class="music-note-animation">
@@ -298,6 +347,83 @@
         </div>
     </section>
 
+    <!-- Photobox Date Section -->
+    <section class="photobox-section" id="photobox">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🎞️ Our Snapshots 🎞️</span>
+                <h2 class="section-title">Photobox Date</h2>
+                <p class="section-subtitle">Momen manis yang tertangkap kamera 💕</p>
+            </div>
+
+            <div class="photobox-container">
+                <div class="photobox-reveal-wrapper" id="photoboxRevealStart">
+                    <button class="reveal-btn photobox-start-btn" onclick="revealPhotobox(1)">
+                        <span class="btn-icon">📸</span>
+                        <span class="btn-text">Buka Photobox Kita</span>
+                    </button>
+                </div>
+
+                <div class="photobox-strip" id="photoboxStrip" style="display: none;">
+                    <div class="strip-header">
+                        <div class="strip-holes"><span></span><span></span><span></span></div>
+                        <div class="strip-title">💕 LOVE STORY 💕</div>
+                    </div>
+
+                    <div class="photobox-frames">
+                        <!-- Frame 1 -->
+                        <div class="photo-frame-item reveal-hidden" id="photoFrame1">
+                            <div class="photo-inner">
+                                <img src="assets/foto/couple.png" alt="Memory 1">
+                                <div class="photo-caption">Senyuman terindahmu...</div>
+                            </div>
+                            <button class="next-photo-btn" id="nextPhotoBtn2" onclick="revealPhotobox(3)">
+                                <span>👇</span> Lanjut
+                            </button>
+                        </div>
+
+                        <!-- Frame 2 -->
+                        <div class="photo-frame-item reveal-hidden" id="photoFrame2">
+                            <div class="photo-inner">
+                                <img src="assets/foto/foto.jpg" alt="Memory 2">
+                                <div class="photo-caption">Saat kita tertawa bersama.</div>
+                            </div>
+                            <button class="next-photo-btn" id="nextPhotoBtn3" onclick="revealPhotobox(4)">
+                                <span>👇</span> Lanjut
+                            </button>
+                        </div>
+
+                        <!-- Frame 3 -->
+                        <div class="photo-frame-item reveal-hidden" id="photoFrame3">
+                            <div class="photo-inner">
+                                <img src="assets/foto/lagi.jpg" alt="Memory 3">
+                                <div class="photo-caption">Bahagia itu sederhana, asal sama kamu.</div>
+                            </div>
+                            <button class="next-photo-btn" id="nextPhotoBtn4" onclick="revealPhotobox(5)">
+                                <span>👇</span> Lanjut
+                            </button>
+                        </div>
+
+                        <!-- Frame 4 -->
+                        <div class="photo-frame-item reveal-hidden" id="photoFrame4">
+                            <div class="photo-inner">
+                                <div class="final-frame">
+                                    <span class="final-icon">💖</span>
+                                    <p>I Love You Forever</p>
+                                    <div class="final-date">14 Feb 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="strip-footer">
+                        <div class="strip-holes"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Countdown Section -->
     <section class="countdown-section" id="countdown">
         <div class="container">
@@ -344,25 +470,54 @@
                 <h2 class="section-title">Harapan & Doa</h2>
             </div>
             <div class="wishes-grid">
-                <div class="wish-card">
+                <!-- Initial reveal button -->
+                <div class="wish-reveal-container" id="wishRevealStart" style="display: block;">
+                    <button class="wish-reveal-btn" onclick="revealWish(1)">
+                        <span class="wish-reveal-icon">💝</span>
+                        <h3>Harapan & Doa Kita</h3>
+                        <p>Klik untuk melihat harapan pertama</p>
+                    </button>
+                </div>
+
+                <!-- Wish 1 -->
+                <div class="wish-card wish-hidden" id="wish1" style="display: none;">
                     <div class="wish-icon">💕</div>
                     <h3>Cinta Abadi</h3>
                     <p>Semoga cinta kita bertahan selamanya, melewati setiap badai dan duka bersama</p>
+                    <button class="wish-next-btn" onclick="revealWish(2)">
+                        <span>💖</span> Harapan Selanjutnya
+                    </button>
                 </div>
-                <div class="wish-card">
+
+                <!-- Wish 2 -->
+                <div class="wish-card wish-hidden" id="wish2" style="display: none;">
                     <div class="wish-icon">🏠</div>
                     <h3>Rumah Tangga Bahagia</h3>
                     <p>Membangun rumah tangga yang penuh kasih, tawa, dan kebahagiaan</p>
+                    <button class="wish-next-btn" onclick="revealWish(3)">
+                        <span>💗</span> Harapan Selanjutnya
+                    </button>
                 </div>
-                <div class="wish-card">
+
+                <!-- Wish 3 -->
+                <div class="wish-card wish-hidden" id="wish3" style="display: none;">
                     <div class="wish-icon">🌟</div>
                     <h3>Masa Depan Cerah</h3>
                     <p>Bersama meraih mimpi dan mewujudkan cita-cita</p>
+                    <button class="wish-next-btn" onclick="revealWish(4)">
+                        <span>💝</span> Harapan Selanjutnya
+                    </button>
                 </div>
-                <div class="wish-card">
+
+                <!-- Wish 4 -->
+                <div class="wish-card wish-hidden" id="wish4" style="display: none;">
                     <div class="wish-icon">🙏</div>
                     <h3>Berkah Tuhan</h3>
                     <p>Selalu dalam lindungan dan berkah dari Yang Maha Kuasa</p>
+                    <div class="letter-complete-badge" style="margin-top: 20px;">
+                        <span class="badge-icon">✨</span>
+                        <span class="badge-text">Semua harapan tersampaikan 💕</span>
+                    </div>
                 </div>
             </div>
         </div>
