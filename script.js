@@ -369,6 +369,21 @@ function toggleEnvelope() {
         if (hint) {
             hint.innerHTML = '<span>👆 Klik untuk buka</span>';
         }
+
+        // Reset letter to first page after close animation
+        setTimeout(() => {
+            const allSteps = document.querySelectorAll('.letter-step');
+            allSteps.forEach((step, index) => {
+                if (index === 0) {
+                    step.style.display = 'block';
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateX(0)';
+                } else {
+                    step.style.display = 'none';
+                    step.style.opacity = '0';
+                }
+            });
+        }, 500);
     }
 }
 
@@ -923,37 +938,62 @@ function initCuteInteractions() {
 
 // Love Letter Reveal
 function revealLetterStep(stepNumber) {
-    const currentStep = document.getElementById(`letterStep${stepNumber - 1}`);
+    // Determine the current step (we need to find which one is currently visible)
+    const allSteps = document.querySelectorAll('.letter-step');
+    let currentStepElement = null;
+
+    allSteps.forEach(step => {
+        if (step.style.display === 'block') {
+            currentStepElement = step;
+        }
+    });
+
     const nextStep = document.getElementById(`letterStep${stepNumber}`);
 
-    if (currentStep && nextStep) {
+    if (currentStepElement && nextStep) {
         // Hide current step with fade out
-        currentStep.style.opacity = '0';
-        currentStep.style.transform = 'translateY(-20px)';
+        currentStepElement.style.opacity = '0';
+        currentStepElement.style.transform = stepNumber > parseInt(currentStepElement.id.replace('letterStep', ''))
+            ? 'translateX(-30px)'
+            : 'translateX(30px)';
 
         setTimeout(() => {
-            currentStep.style.display = 'none';
+            currentStepElement.style.display = 'none';
 
             // Show next step with animation
             nextStep.style.display = 'block';
             nextStep.style.opacity = '0';
-            nextStep.style.transform = 'translateY(20px)';
+            nextStep.style.transform = stepNumber > parseInt(currentStepElement.id.replace('letterStep', ''))
+                ? 'translateX(30px)'
+                : 'translateX(-30px)';
 
             setTimeout(() => {
                 nextStep.style.opacity = '1';
-                nextStep.style.transform = 'translateY(0)';
+                nextStep.style.transform = 'translateX(0)';
             }, 50);
 
-            // Create heart burst effect
-            createRevealHeartBurst();
+            // Create heart burst effect for forward navigation
+            if (stepNumber > parseInt(currentStepElement.id.replace('letterStep', ''))) {
+                createRevealHeartBurst();
+            }
 
             // Show cute notification
-            if (stepNumber === 2) {
-                showCuteBadge('💕 Terus baca ya sayang 💕');
-            } else if (stepNumber === 3) {
-                showCuteBadge('💖 Hampir selesai! 💖');
+            const messages = {
+                1: '💕 Membuka lembaran awal... 💕',
+                2: '💖 Dari relung hatiku... 💖',
+                3: '💝 Sebuah janji untukmu... 💝',
+                4: '✨ Terakhir, untukmu sayang... ✨'
+            };
+
+            if (messages[stepNumber]) {
+                showCuteBadge(messages[stepNumber]);
             }
         }, 400);
+    } else if (!currentStepElement && nextStep) {
+        // Fallback for initial open
+        nextStep.style.display = 'block';
+        nextStep.style.opacity = '1';
+        nextStep.style.transform = 'translateX(0)';
     }
 }
 

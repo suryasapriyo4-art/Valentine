@@ -164,45 +164,87 @@
                         <div class="letter-header">
                             <span class="letter-date">💕 14 Februari 2026 💕</span>
                         </div>
-                        <h2 class="letter-title">Untuk Yang Terkasih...</h2>
+                        <h2 class="letter-title">Untuk Sayangku...</h2>
                         <div class="letter-body">
-                            <!-- Step 1 -->
+                            <!-- Page 1: The Beginning -->
                             <div class="letter-step" id="letterStep1" style="display: block;">
-                                <p class="letter-paragraph">Setiap detik bersamamu adalah keajaiban yang tak ternilai.
-                                    Kota ini tak akan sama
-                                    tanpamu, langit tak akan seindah ini tanpa senyumanmu.</p>
-                                <button class="reveal-btn" onclick="revealLetterStep(2)">
-                                    <span class="btn-icon">💕</span>
-                                    <span class="btn-text">Baca Selanjutnya</span>
+                                <p class="letter-paragraph">Sayang, sejak kamu hadir dalam hidupku, setiap warna terasa
+                                    lebih cerah, dan setiap detik terasa lebih bermakna. Aku tak pernah menyangka bahwa
+                                    "selamanya" bisa terdengar begitu indah sampai aku membayangkannya bersamamu.</p>
+                                <p class="letter-paragraph">Kamu adalah alasan di balik senyum pertamaku di pagi hari
+                                    dan cahaya yang menenangkan di malam-malamku yang sunyi.</p>
+                                <div class="letter-pagination">Halaman 1 dari 4</div>
+                                <button class="reveal-btn next-page-btn"
+                                    onclick="event.stopPropagation(); revealLetterStep(2)">
+                                    <span class="btn-text">Buka Halaman Berikutnya</span>
+                                    <span class="btn-icon">✨</span>
                                 </button>
                             </div>
 
-                            <!-- Step 2 -->
+                            <!-- Page 2: The Feeling -->
                             <div class="letter-step" id="letterStep2" style="display: none;">
-                                <p class="letter-paragraph">Kau adalah alasan mengapa setiap pagi terasa istimewa,
-                                    mengapa setiap malam dingin terasa
-                                    hangat. Cintaku padamu tak terbatas oleh waktu, tak terhitung oleh kata.</p>
-                                <button class="reveal-btn" onclick="revealLetterStep(3)">
-                                    <span class="btn-icon">💖</span>
-                                    <span class="btn-text">Baca Selanjutnya</span>
-                                </button>
+                                <p class="letter-paragraph">Kadang aku terdiam, bertanya-tanya bagaimana bisa seseorang
+                                    sepertimu mau melengkapi kurangku. Kota ini mungkin akan terus berubah, tapi
+                                    perasaanku padamu akan tetap menjadi satu-satunya hal yang takkan pernah pudar oleh
+                                    waktu.</p>
+                                <p class="letter-paragraph">Melihatmu tertawa adalah musik terindah bagiku, dan berada
+                                    di sampingmu adalah tempat teraman yang pernah kutahu.</p>
+                                <div class="letter-pagination">Halaman 2 dari 4</div>
+                                <div class="letter-nav-buttons">
+                                    <button class="reveal-btn prev-page-btn"
+                                        onclick="event.stopPropagation(); revealLetterStep(1)">
+                                        <span class="btn-icon">👈</span>
+                                        <span class="btn-text">Kembali</span>
+                                    </button>
+                                    <button class="reveal-btn next-page-btn"
+                                        onclick="event.stopPropagation(); revealLetterStep(3)">
+                                        <span class="btn-text">Lanjut Lagi</span>
+                                        <span class="btn-icon">💖</span>
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- Step 3 -->
+                            <!-- Page 3: The Promise -->
                             <div class="letter-step" id="letterStep3" style="display: none;">
-                                <p class="letter-paragraph">Di hari kasih sayang ini, aku ingin kau tahu bahwa kau
-                                    adalah segalanya bagiku. Kau
-                                    adalah rumah, kau adalah mimpi, kau adalah cinta yang tak pernah ku bayangkan
-                                    sebelumnya.</p>
-                                <div class="letter-complete-badge">
-                                    <span class="badge-icon">💝</span>
-                                    <span class="badge-text">Sampai akhir ya sayang 💕</span>
+                                <p class="letter-paragraph">Aku ingin kita terus melangkah bersama, melewati badai dan
+                                    merayakan pelangi. Aku janji akan selalu menjadi rumah tempatmu pulang, menjadi
+                                    telinga yang selalu mendengar, dan menjadi hati yang takkan pernah lelah
+                                    mencintaimu.</p>
+                                <p class="letter-paragraph">Cinta kita bukan tentang menemukan kesempurnaan, tapi
+                                    tentang bagaimana kita merawat ketidaksempurnaan itu dengan penuh kasih sayang.</p>
+                                <div class="letter-pagination">Halaman 3 dari 4</div>
+                                <div class="letter-nav-buttons">
+                                    <button class="reveal-btn prev-page-btn"
+                                        onclick="event.stopPropagation(); revealLetterStep(2)">
+                                        <span class="btn-icon">👈</span>
+                                    </button>
+                                    <button class="reveal-btn next-page-btn"
+                                        onclick="event.stopPropagation(); revealLetterStep(4)">
+                                        <span class="btn-text">Halaman Terakhir</span>
+                                        <span class="btn-icon">💝</span>
+                                    </button>
                                 </div>
+                            </div>
+
+                            <!-- Page 4: Final Message -->
+                            <div class="letter-step" id="letterStep4" style="display: none;">
+                                <p class="letter-paragraph">Selamat Hari Valentine, Sayang. Terima kasih telah
+                                    memilihku, telah bersabar denganku, dan telah mencintaiku dengan begitu tulus. Aku
+                                    mencintaimu lebih dari yang bisa kau bayangkan, hari ini, esok, dan selamanya.</p>
+                                <div class="letter-complete-badge">
+                                    <span class="badge-icon">💍</span>
+                                    <span class="badge-text">I Love You So Much! 💕</span>
+                                </div>
+                                <div class="letter-pagination">Halaman 4 dari 4</div>
+                                <button class="reveal-btn prev-page-btn"
+                                    onclick="event.stopPropagation(); revealLetterStep(3)" style="margin-top: 20px;">
+                                    <span class="btn-icon">👈 Baca Ulang</span>
+                                </button>
                             </div>
                         </div>
                         <div class="letter-signature">
-                            <p>Dengan sepenuh hati,</p>
-                            <span class="signature">Your Love 💗</span>
+                            <p>Selamanya milikmu,</p>
+                            <span class="signature">Tersayang-mu 💗</span>
                         </div>
                     </div>
                 </div>
