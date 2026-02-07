@@ -1159,6 +1159,33 @@ function closePhotobox() {
     const strip = document.getElementById('photoboxStrip');
 
     if (strip && startContainer) {
+        // Create heart burst at the strip location
+        const rect = strip.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Show "goodbye" hearts
+        const hearts = ['💕', '💖', '✨', '🎀', '🌸'];
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('span');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.cssText = `
+                    position: fixed;
+                    left: ${centerX}px;
+                    top: ${centerY}px;
+                    font-size: ${Math.random() * 20 + 20}px;
+                    pointer-events: none;
+                    z-index: 9999;
+                    animation: burstHeart 1.5s ease-out forwards;
+                    --tx: ${(Math.random() - 0.5) * 400}px;
+                    --ty: ${(Math.random() - 0.5) * 400}px;
+                `;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }, i * 30);
+        }
+
         // Trigger enhanced CSS animation
         strip.classList.add('closing');
 
@@ -1189,8 +1216,8 @@ function closePhotobox() {
                 btn.style.opacity = '1';
             });
 
-            showCuteBadge('✨ Nanti lihat lagi ya! 💕');
-        }, 500); // Match CSS transition duration
+            showCuteBadge('✨ Kenangannya sudah disimpan ya! 💕');
+        }, 600); // Increased slightly to match new animation duration
     }
 }
 

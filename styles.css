@@ -2712,7 +2712,7 @@ body {
     border: 1px solid #eee;
     width: 340px;
     position: relative;
-    animation: slideInUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: cutePopUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .strip-header,
@@ -2851,16 +2851,24 @@ body {
     filter: blur(0);
 }
 
-@keyframes slideInUp {
-    from {
+@keyframes cutePopUp {
+    0% {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(100px) scale(0.5) rotate(-5deg);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    60% {
+        transform: translateY(-20px) scale(1.1) rotate(2deg);
     }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+}
+
+.photobox-strip:not(.closing) {
+    animation: cutePopUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @media (max-width: 480px) {
@@ -2931,12 +2939,35 @@ body {
 
 /* Enhanced Strip Animation */
 .photobox-strip {
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center center;
 }
 
 .photobox-strip.closing {
     opacity: 0 !important;
-    transform: translateY(100px) scale(0.8) !important;
-    filter: blur(20px);
+    transform: translateY(50px) scale(0) rotate(10deg) !important;
+    filter: blur(10px);
     pointer-events: none;
+}
+
+/* Add a cute roll-up animation if you want it to feel like paper */
+@keyframes cuteRollUp {
+    0% {
+        transform: translateY(0) scale(1) rotate(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(-20px) scale(1.05) rotate(-2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100px) scale(0) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+.photobox-strip.closing {
+    animation: cuteRollUp 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
 }
