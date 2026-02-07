@@ -1262,176 +1262,11 @@ function closePhotobox() {
 }
 
 // Make functions globally available
+window.revealPhotobox = revealPhotobox;
+window.closePhotobox = closePhotobox;
 window.revealLetterStep = revealLetterStep;
 window.revealLyricsStep = revealLyricsStep;
 window.revealWish = revealWish;
-// ===== SECRET ROMANTIC FEATURES =====
-
-// 1. Secret Heart Trigger Sequence
-let secretSequence = [];
-const correctSequence = [1, 2, 3]; // Click 💖, then 💝, then 💗
-
-function checkSecretTrigger(num) {
-    secretSequence.push(num);
-    const hint = document.getElementById('secretHint');
-
-    // Add sparkle effect on click
-    const heartElements = document.querySelectorAll('.hero-hearts .heart-emoji');
-    const targetHeart = heartElements[num - 1];
-    if (targetHeart) {
-        createSparkle(targetHeart);
-    }
-
-    // Update hint text
-    if (hint) {
-        hint.textContent = `Klik hati dengan urutan yang benar... (${secretSequence.length}/3)`;
-        hint.style.color = '#ff6b9d';
-        hint.style.transform = 'scale(1.1)';
-
-        // Reset style after a bit
-        setTimeout(() => {
-            if (hint) {
-                hint.style.color = '#ff6b9d';
-                hint.style.transform = 'scale(1)';
-            }
-        }, 300);
-    }
-
-    // Check if sequence is correct so far
-    for (let i = 0; i < secretSequence.length; i++) {
-        if (secretSequence[i] !== correctSequence[i]) {
-            // Wrong sequence
-            secretSequence = [];
-            if (hint) hint.textContent = 'Aww.. Ulangi dari awal ya! 🌸';
-            showCuteBadge('❌ Oops! Hampir bener, coba lagi sayang.. 🤫');
-            return;
-        }
-    }
-
-    // Success!
-    if (secretSequence.length === correctSequence.length) {
-        triggerLoveRain();
-        secretSequence = [];
-        if (hint) hint.textContent = 'WAWW.. KEJUTAN TERBUKA! ✨';
-        showCuteBadge('🎉 YEEAYY! KAMU BERHASIL! SAYANG BANGETT! 🎉');
-    }
-}
-
-function createSparkle(element) {
-    const rect = element.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    for (let i = 0; i < 8; i++) {
-        const sparkle = document.createElement('span');
-        sparkle.textContent = ['✨', '⭐', '💫', '💖'][Math.floor(Math.random() * 4)];
-        sparkle.style.cssText = `
-            position: fixed;
-            left: ${centerX}px;
-            top: ${centerY}px;
-            font-size: ${Math.random() * 15 + 10}px;
-            pointer-events: none;
-            z-index: 10005;
-            animation: burstHeart 0.8s ease-out forwards;
-            --tx: ${(Math.random() - 0.5) * 150}px;
-            --ty: ${(Math.random() - 0.5) * 150}px;
-        `;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 800);
-    }
-}
-
-function triggerLoveRain() {
-    // Create a massive rain of hearts and sparkles
-    for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-            const heart = document.createElement('span');
-            const hearts = ['💖', '💝', '💗', '💕', '✨', '🌸', '🎀'];
-            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.cssText = `
-                position: fixed;
-                left: ${Math.random() * 100}vw;
-                top: -50px;
-                font-size: ${Math.random() * 20 + 20}px;
-                pointer-events: none;
-                z-index: 10002;
-                animation: loveRainFall ${Math.random() * 2 + 2}s linear forwards;
-            `;
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
-        }, i * 50);
-    }
-
-    // Add extra styles for love rain if not exists
-    if (!document.getElementById('loveRainStyle')) {
-        const rainStyle = document.createElement('style');
-        rainStyle.id = 'loveRainStyle';
-        rainStyle.textContent = `
-            @keyframes loveRainFall {
-                to {
-                    transform: translateY(110vh) rotate(720deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rainStyle);
-    }
-}
-
-// 2. Message in a Bottle
-const romanticMessages = [
-    "Makasih ya udah mau jadi bagian terindah di hidup aku! 🧸💖",
-    "Kamu itu alasan kenapa aku semangat tiap hari. Sayang banget! ✨",
-    "Tau nggak? Kamu itu lebih manis dari gula tauu! 🍬💕",
-    "Pokoknya kita harus bareng-bareng terus ya, no matter what! 🤝💞",
-    "Cuma kamu yang bisa bikin jantungku dugun-dugun nggak jelas.. 💓😳",
-    "I love you to the moon and back, then to the sun! 🌙🌞💖",
-    "Wajah kamu itu moodbooster terbaik aku sepanjang masa! 😊📸",
-    "Nggak ada yang lebih nyaman selain di deket kamu.. 🏠💝",
-    "Tertawa bareng kamu itu momen paling bahagia buat aku! 🧸🌸",
-    "Janji ya kita bakal terus se-lucu ini sampai kakek nenek! 👴👵💍"
-];
-
-function openSecretBottle() {
-    const modal = document.getElementById('bottleModal');
-    const messageEl = document.getElementById('bottleMessage');
-
-    if (modal && messageEl) {
-        // Pick a random message that's different from current
-        let newMessage;
-        do {
-            newMessage = romanticMessages[Math.floor(Math.random() * romanticMessages.length)];
-        } while (newMessage === messageEl.textContent);
-
-        messageEl.textContent = newMessage;
-        modal.style.display = 'flex';
-        modal.classList.add('active');
-
-        // Disable scroll
-        document.body.style.overflow = 'hidden';
-
-        // Show notification
-        showCuteBadge('🍾 Kamu nemu pesan rahasia! 💕');
-    }
-}
-
-function closeBottleModal() {
-    const modal = document.getElementById('bottleModal');
-    if (modal) {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }, 300);
-    }
-}
-
-// Make functions globally available
-window.checkSecretTrigger = checkSecretTrigger;
-window.openSecretBottle = openSecretBottle;
-window.closeBottleModal = closeBottleModal;
-window.revealPhotobox = revealPhotobox;
-window.closePhotobox = closePhotobox;
 
 // Special effect for clicking the final "I Love You So Much" badge
 function triggerFinalLoveEffect(element) {
@@ -1486,7 +1321,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('💕 Happy Valentine\'s Day! 💕');
     console.log('Made with love ❤️');
     console.log('🐻 Cute mode activated! 🌸');
-    console.log('🤫 Ssshh... ada rahasia di halaman ini! 🍾');
 
     // Add smooth transitions to step containers
     const letterSteps = document.querySelectorAll('.letter-step, .lyrics-step');
