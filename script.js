@@ -1265,6 +1265,136 @@ function closePhotobox() {
 window.revealLetterStep = revealLetterStep;
 window.revealLyricsStep = revealLyricsStep;
 window.revealWish = revealWish;
+// ===== SECRET ROMANTIC FEATURES =====
+
+// 1. Secret Heart Trigger Sequence
+let secretSequence = [];
+const correctSequence = [1, 2, 3]; // Click 💖, then 💝, then 💗
+
+function checkSecretTrigger(num) {
+    secretSequence.push(num);
+    const hint = document.getElementById('secretHint');
+
+    // Update hint text
+    if (hint) {
+        hint.textContent = `Klik hati dengan urutan yang benar... (${secretSequence.length}/3)`;
+        hint.style.color = '#ff6b9d';
+
+        // Reset color after a bit
+        setTimeout(() => {
+            if (hint) hint.style.color = 'rgba(183, 110, 121, 0.6)';
+        }, 500);
+    }
+
+    // Check if sequence is correct so far
+    for (let i = 0; i < secretSequence.length; i++) {
+        if (secretSequence[i] !== correctSequence[i]) {
+            // Wrong sequence
+            secretSequence = [];
+            if (hint) hint.textContent = 'Oops! Ulangi lagi ya... (0/3)';
+            showCuteBadge('❌ Urutan salah, ayo coba lagi! 🤫');
+            return;
+        }
+    }
+
+    // Success!
+    if (secretSequence.length === correctSequence.length) {
+        triggerLoveRain();
+        secretSequence = [];
+        if (hint) hint.textContent = 'KEJUTAN TERBUKA! ✨';
+        showCuteBadge('🎊 RAHASIA TERBONGKAR! AKU SAYANG KAMU! 🎊');
+    }
+}
+
+function triggerLoveRain() {
+    // Create a massive rain of hearts and sparkles
+    for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('span');
+            const hearts = ['💖', '💝', '💗', '💕', '✨', '🌸', '🎀'];
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.cssText = `
+                position: fixed;
+                left: ${Math.random() * 100}vw;
+                top: -50px;
+                font-size: ${Math.random() * 20 + 20}px;
+                pointer-events: none;
+                z-index: 10002;
+                animation: loveRainFall ${Math.random() * 2 + 2}s linear forwards;
+            `;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }, i * 50);
+    }
+
+    // Add extra styles for love rain if not exists
+    if (!document.getElementById('loveRainStyle')) {
+        const rainStyle = document.createElement('style');
+        rainStyle.id = 'loveRainStyle';
+        rainStyle.textContent = `
+            @keyframes loveRainFall {
+                to {
+                    transform: translateY(110vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rainStyle);
+    }
+}
+
+// 2. Message in a Bottle
+const romanticMessages = [
+    "Kamu adalah bagian terbaik dari setiap hari-hariku. 💕",
+    "Setiap kali aku melihatmu, aku jatuh cinta lagi dan lagi. ✨",
+    "Makasih ya udah mau jadi pelangi di hidupku yang biasa aja ini. 🌈",
+    "Bersamamu, aku merasa dunia ini milik kita berdua. 🌎💞",
+    "Aku janji nggak akan pernah biarin kamu sendirian. 🤝💓",
+    "Kamu itu satu-satunya orang yang bisa bikin aku senyum cuma dengan liat foto kamu. 😊📸",
+    "I'll choose you over and over again, without a doubt, in a heartbeat. 💖",
+    "Kamu bukan cuma pacarku, kamu itu rumahku. 🏠💝",
+    "Melihatmu tertawa adalah hobi favoritku. 🧸🌸",
+    "Semoga kita terus bareng-bareng ya, sampai rambut kita putih. 👴👵💍"
+];
+
+function openSecretBottle() {
+    const modal = document.getElementById('bottleModal');
+    const messageEl = document.getElementById('bottleMessage');
+
+    if (modal && messageEl) {
+        // Pick a random message that's different from current
+        let newMessage;
+        do {
+            newMessage = romanticMessages[Math.floor(Math.random() * romanticMessages.length)];
+        } while (newMessage === messageEl.textContent);
+
+        messageEl.textContent = newMessage;
+        modal.style.display = 'flex';
+        modal.classList.add('active');
+
+        // Disable scroll
+        document.body.style.overflow = 'hidden';
+
+        // Show notification
+        showCuteBadge('🍾 Kamu nemu pesan rahasia! 💕');
+    }
+}
+
+function closeBottleModal() {
+    const modal = document.getElementById('bottleModal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
+// Make functions globally available
+window.checkSecretTrigger = checkSecretTrigger;
+window.openSecretBottle = openSecretBottle;
+window.closeBottleModal = closeBottleModal;
 window.revealPhotobox = revealPhotobox;
 window.closePhotobox = closePhotobox;
 
@@ -1321,6 +1451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('💕 Happy Valentine\'s Day! 💕');
     console.log('Made with love ❤️');
     console.log('🐻 Cute mode activated! 🌸');
+    console.log('🤫 Ssshh... ada rahasia di halaman ini! 🍾');
 
     // Add smooth transitions to step containers
     const letterSteps = document.querySelectorAll('.letter-step, .lyrics-step');
