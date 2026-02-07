@@ -2668,6 +2668,22 @@ body {
     background: #fff5f8 !important;
 }
 
+.final-love-badge {
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    user-select: none;
+}
+
+.final-love-badge:hover {
+    transform: scale(1.1);
+    background: rgba(255, 107, 157, 0.2);
+    border-color: #ff6b9d;
+}
+
+.final-love-badge:active {
+    transform: scale(0.9);
+}
+
 /* ===== Wishes Reveal Styling ===== */
 .wish-reveal-container {
     grid-column: 1 / -1;

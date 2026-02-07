@@ -1268,6 +1268,54 @@ window.revealWish = revealWish;
 window.revealPhotobox = revealPhotobox;
 window.closePhotobox = closePhotobox;
 
+// Special effect for clicking the final "I Love You So Much" badge
+function triggerFinalLoveEffect(element) {
+    // 1. Jelly bounce animation on the element
+    element.style.animation = 'none';
+    setTimeout(() => {
+        element.style.animation = 'jellyBounce 0.8s ease';
+    }, 10);
+
+    // 2. Massive Burst of Love
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const loveEmojis = ['💖', '💝', '💘', '💕', '💗', '💓', '💞', '🧸', '🌸', '🍭', '🎀', '✨'];
+
+    // Create 30 random cute particles
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('span');
+            particle.textContent = loveEmojis[Math.floor(Math.random() * loveEmojis.length)];
+            particle.style.cssText = `
+                position: fixed;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                font-size: ${Math.random() * 25 + 20}px;
+                pointer-events: none;
+                z-index: 10001;
+                animation: burstHeart ${Math.random() * 1 + 1}s ease-out forwards;
+                --tx: ${(Math.random() - 0.5) * 600}px;
+                --ty: ${(Math.random() - 0.5) * 600}px;
+            `;
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 2000);
+        }, i * 20);
+    }
+
+    // 3. Extra special confetti
+    createConfettiExplosion();
+
+    // 4. Show a super cute notification
+    showCuteBadge('💝 AKU SAYANG BANGET SAMA KAMU!!! 💝');
+
+    // 5. Sound effect placeholder (if you had a cute "pop" sound)
+    console.log('💕 Ultra-Love triggered! 💕');
+}
+
+window.triggerFinalLoveEffect = triggerFinalLoveEffect;
+
 // ===== Initialize when DOM is ready =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('💕 Happy Valentine\'s Day! 💕');
