@@ -1275,15 +1275,26 @@ function checkSecretTrigger(num) {
     secretSequence.push(num);
     const hint = document.getElementById('secretHint');
 
+    // Add sparkle effect on click
+    const heartElements = document.querySelectorAll('.hero-hearts .heart-emoji');
+    const targetHeart = heartElements[num - 1];
+    if (targetHeart) {
+        createSparkle(targetHeart);
+    }
+
     // Update hint text
     if (hint) {
         hint.textContent = `Klik hati dengan urutan yang benar... (${secretSequence.length}/3)`;
         hint.style.color = '#ff6b9d';
+        hint.style.transform = 'scale(1.1)';
 
-        // Reset color after a bit
+        // Reset style after a bit
         setTimeout(() => {
-            if (hint) hint.style.color = 'rgba(183, 110, 121, 0.6)';
-        }, 500);
+            if (hint) {
+                hint.style.color = '#ff6b9d';
+                hint.style.transform = 'scale(1)';
+            }
+        }, 300);
     }
 
     // Check if sequence is correct so far
@@ -1291,8 +1302,8 @@ function checkSecretTrigger(num) {
         if (secretSequence[i] !== correctSequence[i]) {
             // Wrong sequence
             secretSequence = [];
-            if (hint) hint.textContent = 'Oops! Ulangi lagi ya... (0/3)';
-            showCuteBadge('❌ Urutan salah, ayo coba lagi! 🤫');
+            if (hint) hint.textContent = 'Aww.. Ulangi dari awal ya! 🌸';
+            showCuteBadge('❌ Oops! Hampir bener, coba lagi sayang.. 🤫');
             return;
         }
     }
@@ -1301,8 +1312,32 @@ function checkSecretTrigger(num) {
     if (secretSequence.length === correctSequence.length) {
         triggerLoveRain();
         secretSequence = [];
-        if (hint) hint.textContent = 'KEJUTAN TERBUKA! ✨';
-        showCuteBadge('🎊 RAHASIA TERBONGKAR! AKU SAYANG KAMU! 🎊');
+        if (hint) hint.textContent = 'WAWW.. KEJUTAN TERBUKA! ✨';
+        showCuteBadge('🎉 YEEAYY! KAMU BERHASIL! SAYANG BANGETT! 🎉');
+    }
+}
+
+function createSparkle(element) {
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 8; i++) {
+        const sparkle = document.createElement('span');
+        sparkle.textContent = ['✨', '⭐', '💫', '💖'][Math.floor(Math.random() * 4)];
+        sparkle.style.cssText = `
+            position: fixed;
+            left: ${centerX}px;
+            top: ${centerY}px;
+            font-size: ${Math.random() * 15 + 10}px;
+            pointer-events: none;
+            z-index: 10005;
+            animation: burstHeart 0.8s ease-out forwards;
+            --tx: ${(Math.random() - 0.5) * 150}px;
+            --ty: ${(Math.random() - 0.5) * 150}px;
+        `;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 800);
     }
 }
 
@@ -1345,16 +1380,16 @@ function triggerLoveRain() {
 
 // 2. Message in a Bottle
 const romanticMessages = [
-    "Kamu adalah bagian terbaik dari setiap hari-hariku. 💕",
-    "Setiap kali aku melihatmu, aku jatuh cinta lagi dan lagi. ✨",
-    "Makasih ya udah mau jadi pelangi di hidupku yang biasa aja ini. 🌈",
-    "Bersamamu, aku merasa dunia ini milik kita berdua. 🌎💞",
-    "Aku janji nggak akan pernah biarin kamu sendirian. 🤝💓",
-    "Kamu itu satu-satunya orang yang bisa bikin aku senyum cuma dengan liat foto kamu. 😊📸",
-    "I'll choose you over and over again, without a doubt, in a heartbeat. 💖",
-    "Kamu bukan cuma pacarku, kamu itu rumahku. 🏠💝",
-    "Melihatmu tertawa adalah hobi favoritku. 🧸🌸",
-    "Semoga kita terus bareng-bareng ya, sampai rambut kita putih. 👴👵💍"
+    "Makasih ya udah mau jadi bagian terindah di hidup aku! 🧸💖",
+    "Kamu itu alasan kenapa aku semangat tiap hari. Sayang banget! ✨",
+    "Tau nggak? Kamu itu lebih manis dari gula tauu! 🍬💕",
+    "Pokoknya kita harus bareng-bareng terus ya, no matter what! 🤝💞",
+    "Cuma kamu yang bisa bikin jantungku dugun-dugun nggak jelas.. 💓😳",
+    "I love you to the moon and back, then to the sun! 🌙🌞💖",
+    "Wajah kamu itu moodbooster terbaik aku sepanjang masa! 😊📸",
+    "Nggak ada yang lebih nyaman selain di deket kamu.. 🏠💝",
+    "Tertawa bareng kamu itu momen paling bahagia buat aku! 🧸🌸",
+    "Janji ya kita bakal terus se-lucu ini sampai kakek nenek! 👴👵💍"
 ];
 
 function openSecretBottle() {
