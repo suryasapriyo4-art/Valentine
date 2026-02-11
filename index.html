@@ -54,18 +54,27 @@
             <button class="close-modal" onclick="closeMusicModal()">×</button>
             <div class="modal-header">
                 <span class="modal-icon">🎵</span>
-                <h3>Kota Ini Tak Sama Tanpamu</h3>
-                <p>Samsons</p>
+                <h3 id="currentSongTitle">Kota Ini Tak Sama Tanpamu</h3>
+                <p id="currentSongArtist">Samsons</p>
             </div>
             <div class="modal-body">
-                <div class="vinyl-record">
+                <div class="vinyl-record" id="vinylRecord">
                     <div class="vinyl-center">💕</div>
                 </div>
-                <p class="modal-text">Klik tombol di bawah untuk memutar lagu romantis kita</p>
-                <a href="https://vt.tiktok.com/ZSa369mjM/" target="_blank" class="play-song-btn"
-                    onclick="startVisualizerOnly()">
-                    <span>▶️</span> Putar Lagu
-                </a>
+
+                <div class="song-selector">
+                    <p class="selector-label">Pilih Lagu Romantis Kita:</p>
+                    <div class="song-list" id="songList">
+                        <!-- Songs will be populated by JS -->
+                    </div>
+                </div>
+
+                <p class="modal-text">Musik mendampingi cerita kita...</p>
+                <div class="modal-controls">
+                    <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleMusic()">
+                        <span>▶️</span> Play / Pause
+                    </button>
+                </div>
             </div>
             <div class="music-note-float">
                 <span>♪</span>
@@ -76,7 +85,7 @@
     </div>
 
     <!-- Background Music Auto-play -->
-    <audio id="backgroundMusic" loop autoplay>
+    <audio id="backgroundMusic" loop>
         <source src="assets/song/lagu.mp3" type="audio/mpeg">
     </audio>
 

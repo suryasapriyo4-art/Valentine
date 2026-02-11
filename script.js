@@ -30,7 +30,24 @@ function initAnimations() {
     initCuteInteractions();
 }
 
-// ===== Auto-play Background Music =====
+// ===== Music Data & Control =====
+const songs = [
+    {
+        title: "Kota Ini Tak Sama Tanpamu",
+        artist: "Samsons",
+        path: "assets/song/lagu.mp3",
+        id: 0
+    },
+    {
+        title: "About You",
+        artist: "The 1975",
+        path: "assets/song/The_1975_-_About_You_(Official)_128k.mp3",
+        id: 1
+    }
+];
+
+let currentSongIndex = 0;
+let isPlaying = false;
 let musicStarted = false;
 
 function initAutoPlayMusic() {
@@ -40,6 +57,9 @@ function initAutoPlayMusic() {
 
     // Set volume
     backgroundMusic.volume = 0.7;
+
+    // Populate song list in modal
+    populateSongList();
 
     // Try to auto-play immediately
     tryPlayMusic();
@@ -113,11 +133,84 @@ function removeAutoplayListeners() {
     }
 }
 
-function updateMusicUI(isPlaying) {
+function populateSongList() {
+    const songListContainer = document.getElementById('songList');
+    if (!songListContainer) return;
+
+    songListContainer.innerHTML = '';
+    songs.forEach((song, index) => {
+        const songItem = document.createElement('div');
+        songItem.className = `song-item ${index === currentSongIndex ? 'active' : ''}`;
+        songItem.onclick = () => changeSong(index);
+        songItem.innerHTML = `
+            <div class="song-info">
+                <span class="song-title">${song.title}</span>
+                <span class="song-artist">${song.artist}</span>
+            </div>
+            <div class="song-status">
+                ${index === currentSongIndex ? '<span class="playing-icon">🔊</span>' : '<span class="play-icon">▶️</span>'}
+            </div>
+        `;
+        songListContainer.appendChild(songItem);
+    });
+}
+
+function changeSong(index) {
+    if (index === currentSongIndex) return;
+
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const titleEl = document.getElementById('currentSongTitle');
+    const artistEl = document.getElementById('currentSongArtist');
+    const vinylRecord = document.getElementById('vinylRecord');
+
+    if (!backgroundMusic) return;
+
+    currentSongIndex = index;
+    const song = songs[index];
+
+    // Fade out effect for song change
+    if (vinylRecord) vinylRecord.style.animation = 'none';
+
+    backgroundMusic.pause();
+    backgroundMusic.src = song.path;
+    backgroundMusic.load();
+
+    // Update UI
+    if (titleEl) titleEl.textContent = song.title;
+    if (artistEl) artistEl.textContent = song.artist;
+
+    populateSongList();
+
+    backgroundMusic.play().then(() => {
+        updateMusicUI(true);
+        isPlaying = true;
+        musicStarted = true;
+        updateVinylAnimation();
+    }).catch(err => {
+        console.log('Play failed:', err);
+    });
+
+    showCuteBadge(`🎵 Memutar: ${song.title} 💕`);
+}
+
+function updateVinylAnimation() {
+    const vinylRecord = document.getElementById('vinylRecord');
+    if (!vinylRecord) return;
+
+    vinylRecord.style.animation = 'none';
+    setTimeout(() => {
+        vinylRecord.style.animation = 'vinylRotate 5s linear infinite';
+        vinylRecord.style.animationPlayState = isPlaying ? 'running' : 'paused';
+    }, 10);
+}
+
+function updateMusicUI(playing) {
     const musicBtn = document.getElementById('musicBtn');
     const musicVisualizer = document.getElementById('musicVisualizer');
+    const modalPlayBtn = document.getElementById('modalPlayBtn');
+    const vinylRecord = document.getElementById('vinylRecord');
 
-    if (isPlaying) {
+    if (playing) {
         if (musicBtn) {
             musicBtn.classList.add('playing');
             musicBtn.querySelector('.music-text').textContent = 'Playing...';
@@ -125,6 +218,12 @@ function updateMusicUI(isPlaying) {
         }
         if (musicVisualizer) {
             musicVisualizer.classList.add('active');
+        }
+        if (modalPlayBtn) {
+            modalPlayBtn.innerHTML = '<span>⏸️</span> Pause Music';
+        }
+        if (vinylRecord) {
+            vinylRecord.style.animationPlayState = 'running';
         }
     } else {
         if (musicBtn) {
@@ -134,6 +233,12 @@ function updateMusicUI(isPlaying) {
         }
         if (musicVisualizer) {
             musicVisualizer.classList.remove('active');
+        }
+        if (modalPlayBtn) {
+            modalPlayBtn.innerHTML = '<span>▶️</span> Play Music';
+        }
+        if (vinylRecord) {
+            vinylRecord.style.animationPlayState = 'paused';
         }
     }
 }
@@ -214,7 +319,7 @@ function createPetal() {
 
 // ===== Music Control =====
 const musicModal = document.getElementById('musicModal');
-let isPlaying = true; // Start as true since we auto-play
+// isPlaying is already declared at the top of the file
 
 function toggleMusic() {
     const backgroundMusic = document.getElementById('backgroundMusic');
@@ -238,20 +343,23 @@ function toggleMusic() {
     }
 }
 
+function startVisualizerOnly() {
+    // Start the visualizer animation
+    updateMusicUI(true);
+    isPlaying = true;
+    updateVinylAnimation();
+}
+
+// Open modal to change song
 function openMusicModal() {
     musicModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    updateVinylAnimation(); // Ensure vinyl animation is synced
 }
 
 function closeMusicModal() {
     musicModal.classList.remove('active');
     document.body.style.overflow = '';
-}
-
-function startVisualizerOnly() {
-    // Start the visualizer animation when TikTok is opened
-    updateMusicUI(true);
-    isPlaying = true;
 }
 
 // Close modal when clicking outside
@@ -268,8 +376,21 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Update musicBtn click to open modal
+document.addEventListener('DOMContentLoaded', () => {
+    const musicBtn = document.getElementById('musicBtn');
+    if (musicBtn) {
+        musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openMusicModal();
+        });
+    }
+});
+
 window.toggleMusic = toggleMusic;
+window.changeSong = changeSong;
 window.closeMusicModal = closeMusicModal;
+window.openMusicModal = openMusicModal;
 window.startVisualizerOnly = startVisualizerOnly;
 
 // ===== Flip Card Function =====
