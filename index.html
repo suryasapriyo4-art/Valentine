@@ -296,45 +296,77 @@
                 <div class="lyrics-decoration left">♪</div>
                 <div class="lyrics-decoration right">♫</div>
                 <div class="lyrics-content">
-                    <!-- Lyrics Step 1 -->
-                    <div class="lyrics-step" id="lyricsStep1" style="display: block;">
-                        <div class="lyrics-verse" data-aos="fade-up">
-                            <p>Perjalanan melintasi</p>
-                            <p>Kota ini</p>
-                            <p>Dua langit, dua hari</p>
-                            <p>Kau temani aku di sini</p>
+                    <div id="lyrics-kota-ini" class="song-lyrics-container">
+                        <!-- Lyrics Step 1 -->
+                        <div class="lyrics-step kota-ini-step1" style="display: block;">
+                            <div class="lyrics-verse">
+                                <p>Perjalanan melintasi</p>
+                                <p>Kota ini</p>
+                                <p>Dua langit, dua hari</p>
+                                <p>Kau temani aku di sini</p>
+                            </div>
+                            <button class="reveal-btn lyrics-btn" onclick="revealSongStep('kota-ini', 2)">
+                                <span class="btn-icon">🎵</span>
+                                <span class="btn-text">Lirik Selanjutnya</span>
+                            </button>
                         </div>
-                        <button class="reveal-btn lyrics-btn" onclick="revealLyricsStep(2)">
-                            <span class="btn-icon">🎵</span>
-                            <span class="btn-text">Lirik Selanjutnya</span>
-                        </button>
+
+                        <!-- Lyrics Step 2 -->
+                        <div class="lyrics-step kota-ini-step2" style="display: none;">
+                            <div class="lyrics-verse">
+                                <p>Jatuh cinta memang manis</p>
+                                <p>Tak mau waktu ini habis</p>
+                                <p>Penuhilah hati ini</p>
+                                <p>Tak lagi sendiri</p>
+                            </div>
+                            <button class="reveal-btn lyrics-btn" onclick="revealSongStep('kota-ini', 3)">
+                                <span class="btn-icon">🎶</span>
+                                <span class="btn-text">Lirik Selanjutnya</span>
+                            </button>
+                        </div>
+
+                        <!-- Lyrics Step 3 -->
+                        <div class="lyrics-step kota-ini-step3" style="display: none;">
+                            <div class="lyrics-chorus">
+                                <p>Oh, dengannya, dengan dia</p>
+                                <p>Langkahku sempurna</p>
+                                <p>Jatuh cinta memang manis</p>
+                                <p>Apalagi ada kamu di sini</p>
+                            </div>
+                            <div class="letter-complete-badge">
+                                <span class="badge-icon">🎼</span>
+                                <span class="badge-text">Lagu kesayangan kita 💕</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Lyrics Step 2 -->
-                    <div class="lyrics-step" id="lyricsStep2" style="display: none;">
-                        <div class="lyrics-verse" data-aos="fade-up">
-                            <p>Jatuh cinta memang manis</p>
-                            <p>Tak mau waktu ini habis</p>
-                            <p>Penuhilah hati ini</p>
-                            <p>Tak lagi sendiri</p>
+                    <div id="lyrics-about-you" class="song-lyrics-container" style="display: none;">
+                        <!-- Lyrics Step 1 -->
+                        <div class="lyrics-step about-you-step1" style="display: block;">
+                            <div class="lyrics-verse">
+                                <p>I know a place</p>
+                                <p>It's tied to a memory</p>
+                                <p>Of when we were young</p>
+                                <p>And we were free</p>
+                            </div>
+                            <button class="reveal-btn lyrics-btn" onclick="revealSongStep('about-you', 2)">
+                                <span class="btn-icon">🎵</span>
+                                <span class="btn-text">Lirik Selanjutnya</span>
+                            </button>
                         </div>
-                        <button class="reveal-btn lyrics-btn" onclick="revealLyricsStep(3)">
-                            <span class="btn-icon">🎶</span>
-                            <span class="btn-text">Lirik Selanjutnya</span>
-                        </button>
-                    </div>
 
-                    <!-- Lyrics Step 3 -->
-                    <div class="lyrics-step" id="lyricsStep3" style="display: none;">
-                        <div class="lyrics-chorus" data-aos="fade-up">
-                            <p>Oh, dengannya, dengan dia</p>
-                            <p>Langkahku sempurna</p>
-                            <p>Jatuh cinta memang manis</p>
-                            <p>Apalagi ada kamu di sini</p>
-                        </div>
-                        <div class="letter-complete-badge">
-                            <span class="badge-icon">🎼</span>
-                            <span class="badge-text">Lagu kesayangan kita 💕</span>
+                        <!-- Lyrics Step 2 -->
+                        <div class="lyrics-step about-you-step2" style="display: none;">
+                            <div class="lyrics-chorus">
+                                <p>There was something about you</p>
+                                <p>That I can't quite finger</p>
+                                <p>And I hope that you know</p>
+                                <p>That it's you I'll remember</p>
+                            </div>
+                            <div class="letter-complete-badge">
+                                <span class="badge-icon">✨</span>
+                                <span class="badge-text">I'll remember you forever 💕</span>
+                            </div>
                         </div>
                     </div>
                 </div>

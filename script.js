@@ -183,6 +183,22 @@ function changeSong(index) {
     if (heroSubtitle) heroSubtitle.textContent = `"${song.title}"`;
     if (lyricsTitle) lyricsTitle.textContent = song.title;
 
+    // Switch lyrics container
+    const kotaLyrics = document.getElementById('lyrics-kota-ini');
+    const aboutLyrics = document.getElementById('lyrics-about-you');
+
+    if (kotaLyrics && aboutLyrics) {
+        if (song.id === 0) {
+            kotaLyrics.style.display = 'block';
+            aboutLyrics.style.display = 'none';
+        } else {
+            kotaLyrics.style.display = 'none';
+            aboutLyrics.style.display = 'block';
+        }
+        // Reset steps to first step when switching songs
+        resetLyricSteps();
+    }
+
     populateSongList();
 
     backgroundMusic.play().then(() => {
@@ -1122,10 +1138,10 @@ function revealLetterStep(stepNumber) {
     }
 }
 
-// Lyrics Reveal
-function revealLyricsStep(stepNumber) {
-    const currentStep = document.getElementById(`lyricsStep${stepNumber - 1}`);
-    const nextStep = document.getElementById(`lyricsStep${stepNumber}`);
+// Lyrics Reveal (Dynamic for multiple songs)
+function revealSongStep(songPrefix, stepNumber) {
+    const currentStep = document.querySelector(`.${songPrefix}-step${stepNumber - 1}`);
+    const nextStep = document.querySelector(`.${songPrefix}-step${stepNumber}`);
 
     if (currentStep && nextStep) {
         currentStep.style.opacity = '0';
@@ -1145,13 +1161,24 @@ function revealLyricsStep(stepNumber) {
 
             createRevealHeartBurst();
 
-            if (stepNumber === 2) {
-                showCuteBadge('🎵 Melodi cinta kita 🎵');
-            } else if (stepNumber === 3) {
-                showCuteBadge('🎶 Chorus favorit! 🎶');
-            }
+            const badgeMessage = stepNumber === 2 ? '🎵 Melodi cinta kita 🎵' : '🎶 Chorus favorit! 🎶';
+            showCuteBadge(badgeMessage);
         }, 400);
     }
+}
+
+function resetLyricSteps() {
+    const allSteps = document.querySelectorAll('.lyrics-step');
+    allSteps.forEach(step => {
+        if (step.classList.contains('kota-ini-step1') || step.classList.contains('about-you-step1')) {
+            step.style.display = 'block';
+            step.style.opacity = '1';
+            step.style.transform = 'translateY(0)';
+        } else {
+            step.style.display = 'none';
+            step.style.opacity = '0';
+        }
+    });
 }
 
 // Wishes Reveal
@@ -1389,8 +1416,9 @@ function closePhotobox() {
 // Make functions globally available
 window.revealPhotobox = revealPhotobox;
 window.closePhotobox = closePhotobox;
+window.revealSongStep = revealSongStep;
 window.revealLetterStep = revealLetterStep;
-window.revealLyricsStep = revealLyricsStep;
+window.revealLyricsStep = revealSongStep; // Maintain compatibility if needed
 window.revealWish = revealWish;
 
 // Special effect for clicking the final "I Love You So Much" badge
