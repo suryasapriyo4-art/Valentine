@@ -414,29 +414,33 @@
 
 /* ===== CSS Variables & Root ===== */
 :root {
-    --primary-pink: #e8b4bc;
-    --primary-red: #d4a5a5;
-    --deep-rose: #c9a0a0;
-    --soft-pink: #fdf5f5;
-    --blush: #f5e6e8;
-    --romantic-purple: #d4b8c4;
-    --gold: #d4af37;
-    --rose-gold: #b76e79;
+    /* New Color Palette: White, Blue, Pink */
+    --primary-blue: #a2d2ff;
+    --soft-blue: #bde0fe;
+    --primary-pink: #ffafcc;
+    --soft-pink: #ffc8dd;
+    --deep-pink: #ff8fab;
+    --deep-blue: #7fb3d5;
+
     --white: #ffffff;
+    --off-white: #f8f9fa;
     --cream: #fefefe;
-    --off-white: #faf8f8;
-    --dark-text: #4a4a4a;
-    --light-text: rgba(74, 74, 74, 0.8);
 
-    --gradient-romantic: linear-gradient(135deg, #ffffff 0%, #fdf5f5 50%, #f5e6e8 100%);
-    --gradient-love: linear-gradient(135deg, #ffffff 0%, #fdf5f5 50%, #f5e6e8 100%);
-    --gradient-sunset: linear-gradient(135deg, #ffffff 0%, #faf8f8 50%, #f5e6e8 100%);
-    --gradient-dark: linear-gradient(135deg, #faf8f8 0%, #f5e6e8 50%, #fdf5f5 100%);
-    --gradient-hero: linear-gradient(135deg, #ffffff 0%, #fdf5f5 30%, #f5e6e8 70%, #e8d4d8 100%);
+    --dark-text: #2d3436;
+    --light-text: rgba(45, 52, 54, 0.8);
 
-    --shadow-soft: 0 10px 40px rgba(183, 110, 121, 0.1);
-    --shadow-strong: 0 20px 60px rgba(183, 110, 121, 0.15);
-    --shadow-glow: 0 0 30px rgba(183, 110, 121, 0.2);
+    --accent-gold: #d4af37;
+
+    /* Gradients updated to mix Blue and Pink */
+    --gradient-romantic: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffc8dd 100%);
+    --gradient-love: linear-gradient(135deg, #bde0fe 0%, #ffffff 50%, #ffafcc 100%);
+    --gradient-sunset: linear-gradient(135deg, #ffc8dd 0%, #ffffff 50%, #bde0fe 100%);
+    --gradient-dark: linear-gradient(135deg, #a2d2ff 0%, #ffafcc 50%, #ffffff 100%);
+    --gradient-hero: linear-gradient(135deg, #ffffff 0%, #bde0fe 30%, #ffc8dd 70%, #a2d2ff 100%);
+
+    --shadow-soft: 0 10px 40px rgba(162, 210, 255, 0.15);
+    --shadow-strong: 0 20px 60px rgba(255, 175, 204, 0.2);
+    --shadow-glow: 0 0 30px rgba(162, 210, 255, 0.3);
 
     --font-script: 'Dancing Script', cursive;
     --font-display: 'Playfair Display', serif;
@@ -505,7 +509,7 @@ body {
 .heart-loader .heart {
     width: 30px;
     height: 30px;
-    background: #b76e79;
+    background: var(--primary-blue);
     transform: rotate(-45deg);
     animation: heartPulse 1s ease-in-out infinite;
 }
@@ -516,7 +520,7 @@ body {
     position: absolute;
     width: 30px;
     height: 30px;
-    background: #b76e79;
+    background: var(--primary-pink);
     border-radius: 50%;
 }
 
@@ -620,7 +624,7 @@ body {
 }
 
 .music-btn {
-    background: #b76e79;
+    background: var(--primary-blue);
     border: none;
     padding: 15px 25px;
     border-radius: 50px;
@@ -718,7 +722,7 @@ body {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #b76e79;
+    color: var(--primary-pink);
     cursor: pointer;
     transition: var(--transition-smooth);
     line-height: 1;
@@ -743,7 +747,7 @@ body {
 .modal-header h3 {
     font-family: var(--font-script);
     font-size: 2rem;
-    color: #b76e79;
+    color: var(--primary-pink);
     margin-bottom: 5px;
 }
 
@@ -798,7 +802,7 @@ body {
 .vinyl-center {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #b76e79 0%, #d4af37 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -824,7 +828,7 @@ body {
 .selector-label {
     font-family: var(--font-body);
     font-size: 0.85rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     margin-bottom: 10px;
     display: block;
     font-weight: 600;
@@ -846,7 +850,7 @@ body {
 }
 
 .song-list::-webkit-scrollbar-thumb {
-    background: #b76e79;
+    background: var(--primary-blue);
     border-radius: 10px;
 }
 
@@ -865,14 +869,14 @@ body {
 
 .song-item:hover {
     transform: translateX(5px);
-    border-color: #b76e79;
-    background: #fdf5f5;
+    border-color: var(--primary-blue);
+    background: var(--off-white);
 }
 
 .song-item.active {
-    background: #b76e79;
+    background: var(--primary-blue);
     color: white;
-    border-color: #b76e79;
+    border-color: var(--primary-blue);
 }
 
 .song-item.active .song-artist {
@@ -911,13 +915,13 @@ body {
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.9rem;
-    box-shadow: 0 10px 20px rgba(183, 110, 121, 0.2);
+    box-shadow: 0 10px 20px rgba(162, 210, 255, 0.2);
     transition: var(--transition-bounce);
 }
 
 .modal-play-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.3);
+    box-shadow: 0 15px 30px rgba(162, 210, 255, 0.3);
 }
 
 .modal-play-btn:active {
@@ -929,10 +933,10 @@ body {
     align-items: center;
     gap: 8px;
     background: white;
-    color: #b76e79;
+    color: var(--primary-blue);
     padding: 8px 20px;
     border-radius: 50px;
-    border: 1px solid #b76e79;
+    border: 1px solid var(--primary-blue);
     cursor: pointer;
     font-family: var(--font-body);
     font-weight: 500;
@@ -943,10 +947,10 @@ body {
 }
 
 .change-song-page-btn:hover {
-    background: #b76e79;
+    background: var(--primary-blue);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+    box-shadow: 0 6px 15px rgba(162, 210, 255, 0.2);
 }
 
 .modal-text {
@@ -1124,7 +1128,7 @@ body {
     position: absolute;
     width: 15px;
     height: 15px;
-    background: linear-gradient(135deg, #e8d4d8, #d4b8c4);
+    background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
     border-radius: 50% 0 50% 50%;
     animation: petalFall linear infinite;
     opacity: 0.6;
@@ -1148,16 +1152,16 @@ body {
 
 .pre-title {
     display: inline-block;
-    background: rgba(183, 110, 121, 0.1);
+    background: rgba(162, 210, 255, 0.15);
     backdrop-filter: blur(10px);
     padding: 10px 30px;
     border-radius: 50px;
-    color: #b76e79;
+    color: var(--primary-blue);
     font-family: var(--font-body);
     font-size: 1rem;
     margin-bottom: 30px;
     animation: fadeInDown 1s ease-out;
-    border: 1px solid rgba(183, 110, 121, 0.2);
+    border: 1px solid rgba(162, 210, 255, 0.3);
 }
 
 .main-title {
@@ -1167,8 +1171,8 @@ body {
 .title-line {
     display: block;
     font-family: var(--font-display);
-    color: #b76e79;
-    text-shadow: 0 5px 30px rgba(183, 110, 121, 0.1);
+    color: var(--primary-blue);
+    text-shadow: 0 5px 30px rgba(162, 210, 255, 0.2);
 }
 
 .title-line:first-child {
@@ -1181,7 +1185,7 @@ body {
     font-family: var(--font-script);
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
-    background: linear-gradient(90deg, #b76e79, #d4af37, #b76e79);
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-pink), var(--primary-blue));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1665,7 +1669,7 @@ body {
 
 .section-tag {
     display: inline-block;
-    background: #b76e79;
+    background: var(--primary-blue);
     color: var(--white);
     padding: 8px 25px;
     border-radius: 50px;
@@ -1676,7 +1680,7 @@ body {
 .section-title {
     font-family: var(--font-script);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--deep-rose);
+    color: var(--primary-pink);
     margin-bottom: 15px;
 }
 
@@ -1690,22 +1694,22 @@ body {
 /* ===== Lyrics Section ===== */
 .lyrics-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #faf8f8 0%, #f5e6e8 50%, #fdf5f5 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffffff 100%);
     position: relative;
     overflow: hidden;
 }
 
 .lyrics-section .section-tag {
-    background: #b76e79;
+    background: var(--primary-blue);
     backdrop-filter: blur(10px);
 }
 
 .lyrics-section .section-title {
-    color: #b76e79;
+    color: var(--primary-blue);
 }
 
 .lyrics-section .section-subtitle {
-    color: #c9a0a0;
+    color: var(--soft-blue);
 }
 
 .lyrics-card {
@@ -1716,8 +1720,8 @@ body {
     border-radius: 30px;
     padding: 60px 50px;
     position: relative;
-    border: 1px solid rgba(183, 110, 121, 0.15);
-    box-shadow: 0 25px 50px rgba(183, 110, 121, 0.1);
+    border: 1px solid rgba(162, 210, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(162, 210, 255, 0.15);
 }
 
 .lyrics-decoration {
@@ -1757,14 +1761,14 @@ body {
 
 .lyrics-chorus {
     padding: 30px;
-    background: rgba(183, 110, 121, 0.1);
+    background: rgba(162, 210, 255, 0.1);
     border-radius: 20px;
-    border-left: 4px solid #b76e79;
+    border-left: 4px solid var(--primary-blue);
 }
 
 .lyrics-chorus p {
     font-weight: 600;
-    color: #b76e79;
+    color: var(--primary-blue);
 }
 
 .music-note-animation {
@@ -1875,7 +1879,7 @@ body {
     left: 0;
     right: 0;
     padding: 20px;
-    background: linear-gradient(transparent, rgba(183, 110, 121, 0.9));
+    background: linear-gradient(transparent, rgba(162, 210, 255, 0.9));
     transform: translateY(100%);
     transition: var(--transition-smooth);
 }
@@ -1924,7 +1928,7 @@ body {
 }
 
 .flip-card-front {
-    background: linear-gradient(135deg, #fdf5f5 0%, #f5e6e8 50%, #e8d4d8 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffc8dd 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1982,9 +1986,9 @@ body {
 .cover-title {
     font-family: var(--font-script);
     font-size: 1.8rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     margin-bottom: 8px;
-    text-shadow: 0 2px 10px rgba(183, 110, 121, 0.2);
+    text-shadow: 0 2px 10px rgba(162, 210, 255, 0.3);
 }
 
 .cover-subtitle {
@@ -1999,7 +2003,7 @@ body {
 .cover-hint {
     font-family: var(--font-body);
     font-size: 0.85rem;
-    color: #d4a5a5;
+    color: var(--soft-blue);
     margin-bottom: 15px;
     animation: fadeInOut 2s ease-in-out infinite;
 }
@@ -2007,12 +2011,12 @@ body {
 .cover-cta {
     font-family: var(--font-script);
     font-size: 1.3rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     margin-bottom: 15px;
     padding: 10px 25px;
-    background: rgba(183, 110, 121, 0.1);
+    background: rgba(162, 210, 255, 0.1);
     border-radius: 30px;
-    border: 2px dashed #e8b4bc;
+    border: 2px dashed var(--soft-blue);
     animation: ctaBounce 1.5s ease-in-out infinite;
     display: inline-block;
 }
@@ -2026,7 +2030,7 @@ body {
 
     50% {
         transform: scale(1.05);
-        background: rgba(183, 110, 121, 0.15);
+        background: rgba(162, 210, 255, 0.15);
     }
 }
 
@@ -2091,7 +2095,7 @@ body {
 /* Always show overlay when flipped */
 .gallery-overlay.always-show {
     transform: translateY(0);
-    background: linear-gradient(transparent 0%, rgba(183, 110, 121, 0.85) 100%);
+    background: linear-gradient(transparent 0%, rgba(162, 210, 255, 0.85) 100%);
 }
 
 /* Disable hover effects on flip cards */
@@ -2106,7 +2110,7 @@ body {
 /* ===== Countdown Section ===== */
 .countdown-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #fdf5f5 50%, #f5e6e8 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffc8dd 100%);
     position: relative;
 }
 
@@ -2118,8 +2122,8 @@ body {
     backdrop-filter: blur(20px);
     border-radius: 30px;
     padding: 60px 40px;
-    border: 1px solid rgba(183, 110, 121, 0.15);
-    box-shadow: 0 25px 50px rgba(183, 110, 121, 0.1);
+    border: 1px solid rgba(162, 210, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(162, 210, 255, 0.15);
 }
 
 .countdown-hearts {
@@ -2143,14 +2147,14 @@ body {
 .countdown-title {
     font-family: var(--font-script);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: #b76e79;
+    color: var(--primary-blue);
     margin-bottom: 10px;
 }
 
 .countdown-subtitle {
     font-family: var(--font-display);
     font-size: 1.2rem;
-    color: #c9a0a0;
+    color: var(--primary-pink);
     margin-bottom: 40px;
 }
 
@@ -2163,7 +2167,7 @@ body {
 }
 
 .timer-item {
-    background: rgba(183, 110, 121, 0.1);
+    background: rgba(162, 210, 255, 0.1);
     padding: 25px 20px;
     border-radius: 20px;
     min-width: 100px;
@@ -2175,14 +2179,14 @@ body {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
-    color: #b76e79;
+    color: var(--primary-blue);
     line-height: 1;
 }
 
 .timer-label {
     display: block;
     font-size: 0.9rem;
-    color: #c9a0a0;
+    color: var(--soft-blue);
     margin-top: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -2190,7 +2194,7 @@ body {
 
 .timer-separator {
     font-size: 3rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     font-weight: 700;
 }
 
@@ -2296,14 +2300,14 @@ body {
 .footer-quote {
     font-family: var(--font-display);
     font-size: 1.3rem;
-    color: #c9a0a0;
+    color: var(--soft-blue);
     font-style: italic;
     margin-bottom: 20px;
 }
 
 .footer-copyright {
     font-family: var(--font-body);
-    color: #b76e79;
+    color: var(--primary-blue);
     font-size: 1rem;
     margin-bottom: 10px;
 }
@@ -2311,7 +2315,7 @@ body {
 .footer-year {
     font-family: var(--font-script);
     font-size: 1.5rem;
-    color: #b76e79;
+    color: var(--primary-pink);
 }
 
 /* ===== Responsive ===== */
@@ -2420,7 +2424,7 @@ body {
 .envelope-label {
     font-family: var(--font-script);
     font-size: 1.5rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     text-align: center;
 }
 
@@ -2481,10 +2485,10 @@ body {
 .letter-date {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     display: inline-block;
     padding: 5px 15px;
-    background: rgba(183, 110, 121, 0.1);
+    background: rgba(162, 210, 255, 0.1);
     border-radius: 20px;
 }
 
@@ -2525,7 +2529,7 @@ body {
 .signature {
     font-family: var(--font-script);
     font-size: 1.5rem;
-    color: #b76e79;
+    color: var(--primary-pink);
 }
 
 /* Envelope Hint */
@@ -2534,7 +2538,7 @@ body {
     bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(183, 110, 121, 0.9);
+    background: var(--primary-blue);
     color: white;
     padding: 10px 20px;
     border-radius: 25px;
@@ -2564,7 +2568,7 @@ body {
     transform: translateX(-50%) scale(1.05);
     opacity: 1;
     z-index: 10;
-    box-shadow: 0 20px 60px rgba(183, 110, 121, 0.4);
+    box-shadow: 0 20px 60px rgba(162, 210, 255, 0.4);
     height: auto;
     min-height: 480px;
     max-height: 600px;
@@ -2605,7 +2609,7 @@ body {
     top: -100px;
     /* Moved up a bit more */
     right: 0;
-    background: linear-gradient(135deg, #ff6b9d 0%, #ff8e53 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--soft-blue) 100%);
     color: white;
     padding: 10px 25px;
     border-radius: 50px;
@@ -2613,7 +2617,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 10px 20px rgba(162, 210, 255, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 20;
     display: block;
@@ -2621,7 +2625,7 @@ body {
 
 .envelope-wrapper.opened:hover::after {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 15px 30px rgba(162, 210, 255, 0.4);
 }
 
 /* Hover Effects */
@@ -2714,7 +2718,7 @@ body {
 
 /* ===== Step-by-Step Reveal & Buttons ===== */
 .reveal-btn {
-    background: linear-gradient(135deg, #ff6b9d 0%, #ff8e53 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -2728,14 +2732,14 @@ body {
     justify-content: center;
     gap: 10px;
     margin: 20px auto;
-    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 10px 20px rgba(162, 210, 255, 0.3);
     transition: var(--transition-bounce);
     animation: pulse 2s infinite;
 }
 
 .reveal-btn:hover {
     transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 15px 30px rgba(162, 210, 255, 0.4);
 }
 
 .reveal-btn .btn-icon {
@@ -2754,7 +2758,7 @@ body {
     background: rgba(183, 110, 121, 0.1);
     padding: 10px 20px;
     border-radius: 50px;
-    color: #b76e79;
+    color: var(--primary-blue);
     font-family: var(--font-body);
     font-size: 0.9rem;
     margin-top: 20px;
@@ -2764,7 +2768,7 @@ body {
 
 .letter-pagination {
     font-size: 0.75rem;
-    color: #b76e79;
+    color: var(--primary-blue);
     opacity: 0.7;
     text-align: center;
     margin: 15px 0 5px;
@@ -2784,8 +2788,8 @@ body {
 
 .prev-page-btn {
     background: white !important;
-    color: #ff6b9d !important;
-    border: 1px solid #ff6b9d !important;
+    color: var(--primary-blue) !important;
+    border: 1px solid var(--primary-blue) !important;
     box-shadow: none !important;
 }
 
@@ -2818,7 +2822,7 @@ body {
 
 .wish-reveal-btn {
     background: white;
-    border: 2px dashed #ff6b9d;
+    border: 2px dashed var(--primary-blue);
     padding: 30px 50px;
     border-radius: 20px;
     cursor: pointer;
@@ -2839,8 +2843,8 @@ body {
 
 .wish-next-btn {
     background: none;
-    border: 1px solid #ff6b9d;
-    color: #ff6b9d;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
     padding: 8px 15px;
     border-radius: 50px;
     margin-top: 15px;
@@ -2851,7 +2855,7 @@ body {
 }
 
 .wish-next-btn:hover {
-    background: #ff6b9d;
+    background: var(--primary-blue);
     color: white;
 }
 
@@ -2862,7 +2866,7 @@ body {
 /* ===== Photobox Date Section ===== */
 .photobox-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #fdf5f5 0%, #f5e6e8 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffc8dd 100%);
     position: relative;
     overflow: hidden;
 }
@@ -2971,14 +2975,14 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
-    background: #ff6b9d;
+    background: var(--primary-blue);
     color: white;
     border: none;
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.7rem;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 5px 15px rgba(162, 210, 255, 0.4);
 }
 
 .final-frame {
@@ -2987,7 +2991,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    background: linear-gradient(135deg, #ff6b9d, #ff8e53);
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-pink));
     padding: 20px;
     color: white;
     text-align: center;

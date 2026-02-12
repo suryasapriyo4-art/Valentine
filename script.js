@@ -265,7 +265,7 @@ function updateMusicUI(playing) {
 
 // ===== Floating Hearts Background =====
 function createFloatingHearts() {
-    const hearts = ['💕', '💖', '💗', '💝', '❤️', '💘', '💓', '💞'];
+    const hearts = ['💕', '💖', '💗', '💝', '💙', '🩵', '🤍', '✨'];
     const numHearts = 20;
 
     for (let i = 0; i < numHearts; i++) {
@@ -425,7 +425,7 @@ function flipCard(card) {
         const centerY = rect.top + rect.height / 2;
 
         // Create heart burst effect
-        const hearts = ['💕', '💖', '💗', '💝', '❤️', '✨', '💫'];
+        const hearts = ['💕', '💖', '💗', '💝', '💙', '✨', '🩵'];
         for (let i = 0; i < 12; i++) {
             const heart = document.createElement('span');
             heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
@@ -478,7 +478,7 @@ function toggleEnvelope() {
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 3;
 
-        const hearts = ['💕', '💖', '💗', '💝', '✨', '💌', '🌸'];
+        const hearts = ['💕', '💖', '💗', '💝', '✨', '💙', '🤍'];
         for (let i = 0; i < 10; i++) {
             setTimeout(() => {
                 const heart = document.createElement('span');
@@ -653,7 +653,7 @@ document.addEventListener('click', (e) => {
 });
 
 function createHeartBurst(x, y) {
-    const hearts = ['💕', '💖', '💗', '💝', '❤️'];
+    const hearts = ['💕', '💖', '💗', '💝', '💙', '🩵'];
     const numHearts = 8;
 
     for (let i = 0; i < numHearts; i++) {
@@ -747,8 +747,8 @@ function activateEasterEgg() {
         transform: translate(-50%, -50%);
         font-family: 'Dancing Script', cursive;
         font-size: 3rem;
-        color: #ff6b9d;
-        text-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+        color: var(--primary-blue);
+        text-shadow: 0 0 20px rgba(162, 210, 255, 0.5);
         z-index: 10000;
         animation: pulse 0.5s ease-in-out infinite;
     `;
@@ -769,7 +769,7 @@ function createFloatingCuteEmojis() {
     container.id = 'floatingCuteEmojis';
     document.body.appendChild(container);
 
-    const cuteEmojis = ['🐻', '🌸', '⭐', '🎀', '🦋', '🌷', '🍓', '🐰', '🌺', '✨', '🎈', '🍩', '🌙', '🦄', '🍭'];
+    const cuteEmojis = ['🐻', '🌸', '⭐', '🎀', '🦋', '🌷', '🍓', '🐰', '🐾', '✨', '🎈', '☁️', '🌙', '🌊', '🍭'];
 
     // Create initial emojis (reduced amount)
     for (let i = 0; i < 5; i++) {
