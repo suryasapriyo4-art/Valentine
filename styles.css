@@ -440,11 +440,14 @@
 
     --gold-accent: #f59e0b;
 
-    /* Professional Gradients */
-    --gradient-romantic: linear-gradient(135deg, var(--white) 0%, var(--soft-blue) 50%, var(--soft-pink) 100%);
-    --gradient-love: linear-gradient(135deg, var(--soft-blue) 0%, var(--white) 50%, var(--soft-pink) 100%);
-    --gradient-sunset: linear-gradient(135deg, var(--soft-pink) 0%, var(--white) 50%, var(--soft-blue) 100%);
-    --gradient-dark: linear-gradient(135deg, var(--deep-blue) 0%, var(--deep-pink) 100%);
+    /* Gradient Variants */
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
+    --gradient-soft: linear-gradient(135deg, var(--soft-blue) 0%, var(--soft-pink) 100%);
+    --gradient-blue: linear-gradient(135deg, var(--primary-blue) 0%, var(--deep-blue) 100%);
+    --gradient-pink: linear-gradient(135deg, var(--primary-pink) 0%, var(--deep-pink) 100%);
+
+    --gradient-romantic: var(--gradient-soft);
+    --gradient-love: linear-gradient(135deg, #ebf5fb 0%, #ffffff 50%, #fdf2f8 100%);
     --gradient-hero: radial-gradient(circle at center, var(--white) 0%, #f1f5f9 100%);
 
     --shadow-soft: 0 10px 40px rgba(30, 41, 59, 0.05);
@@ -633,11 +636,11 @@ body {
 }
 
 .music-btn {
-    background: var(--white);
-    border: 2px solid var(--primary-blue);
+    background: var(--gradient-primary);
+    border: none;
     padding: 15px 25px;
     border-radius: 50px;
-    color: var(--primary-blue);
+    color: var(--white);
     font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 600;
@@ -650,8 +653,8 @@ body {
 }
 
 .music-btn:hover {
-    background: var(--primary-blue);
-    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
 }
 
 .music-btn:hover {
@@ -1167,16 +1170,17 @@ body {
 
 .pre-title {
     display: inline-block;
-    background: var(--soft-blue);
+    background: var(--gradient-soft);
     padding: 10px 30px;
     border-radius: 50px;
-    color: var(--deep-blue);
+    color: var(--dark-text);
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 30px;
     animation: fadeInDown 1s ease-out;
-    border: 1px solid var(--primary-blue);
+    border: 1px solid var(--white);
+    box-shadow: var(--shadow-soft);
 }
 
 .main-title {
@@ -1681,18 +1685,22 @@ body {
 
 .section-tag {
     display: inline-block;
-    background: var(--primary-blue);
+    background: var(--gradient-primary);
     color: var(--white);
     padding: 8px 25px;
     border-radius: 50px;
     font-size: 0.9rem;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-soft);
 }
 
 .section-title {
     font-family: var(--font-script);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--primary-pink);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 15px;
 }
 
@@ -2767,14 +2775,15 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--soft-blue);
+    background: var(--gradient-soft);
     padding: 10px 20px;
     border-radius: 50px;
-    color: var(--primary-blue);
+    color: var(--dark-text);
     font-family: var(--font-body);
     font-size: 0.9rem;
     margin-top: 20px;
-    border: 1px solid var(--primary-blue);
+    border: 1px solid var(--white);
+    box-shadow: var(--shadow-soft);
     animation: cutePop 0.5s ease-out;
 }
 
