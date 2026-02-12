@@ -739,7 +739,7 @@ function activateEasterEgg() {
 
     // Display special message
     const message = document.createElement('div');
-    message.innerHTML = '💖 I Love You Forever! 💖';
+    message.innerHTML = '💙 I Love You Forever! 💙';
     message.style.cssText = `
         position: fixed;
         top: 50%;
@@ -769,7 +769,7 @@ function createFloatingCuteEmojis() {
     container.id = 'floatingCuteEmojis';
     document.body.appendChild(container);
 
-    const cuteEmojis = ['🐻', '🌸', '⭐', '🎀', '🦋', '🌷', '🍓', '🐰', '🐾', '✨', '🎈', '☁️', '🌙', '🌊', '🍭'];
+    const cuteEmojis = ['🐻', '❄️', '⭐', '🫧', '🦋', '🎐', '💎', '🐰', '🐾', '✨', '🎈', '☁️', '🌙', '🌊', '🌀'];
 
     // Create initial emojis (reduced amount)
     for (let i = 0; i < 5; i++) {
