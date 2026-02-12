@@ -924,6 +924,31 @@ body {
     transform: scale(0.95);
 }
 
+.change-song-page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: #b76e79;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid #b76e79;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    transition: var(--transition-bounce);
+    box-shadow: 0 4px 10px rgba(183, 110, 121, 0.1);
+}
+
+.change-song-page-btn:hover {
+    background: #b76e79;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(183, 110, 121, 0.2);
+}
+
 .modal-text {
     font-family: var(--font-body);
     color: #999;

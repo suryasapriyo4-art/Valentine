@@ -161,6 +161,8 @@ function changeSong(index) {
     const backgroundMusic = document.getElementById('backgroundMusic');
     const titleEl = document.getElementById('currentSongTitle');
     const artistEl = document.getElementById('currentSongArtist');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    const lyricsTitle = document.getElementById('lyricsTitle');
     const vinylRecord = document.getElementById('vinylRecord');
 
     if (!backgroundMusic) return;
@@ -178,6 +180,8 @@ function changeSong(index) {
     // Update UI
     if (titleEl) titleEl.textContent = song.title;
     if (artistEl) artistEl.textContent = song.artist;
+    if (heroSubtitle) heroSubtitle.textContent = `"${song.title}"`;
+    if (lyricsTitle) lyricsTitle.textContent = song.title;
 
     populateSongList();
 
