@@ -414,45 +414,29 @@
 
 /* ===== CSS Variables & Root ===== */
 :root {
-    /* Unified Contrast Palette: White, Blue, Pink */
+    /* Core Theme Colors */
     --primary-blue: #3498db;
-    /* Standard Blue */
-    --deep-blue: #2980b9;
-    /* Darker Blue */
-    --soft-blue: #ebf5fb;
-    /* Very light Blue-tinted White */
-
     --primary-pink: #e91e63;
-    /* Professional Pink */
-    --deep-pink: #c2185b;
-    /* Darker Pink */
-    --soft-pink: #fdf2f8;
-    /* Very light Pink-tinted White */
-
     --white: #ffffff;
-    --off-white: #f8fafc;
-    --cream: #ffffff;
+    --black: #000000;
 
-    --dark-text: #1e293b;
-    /* Slate 800 - High legibility */
-    --light-text: #64748b;
-    /* Slate 500 */
+    /* Universal Tri-Color Gradients (White-Blue-Pink) */
+    --gradient-universal: linear-gradient(135deg, var(--primary-blue) 0%, var(--white) 50%, var(--primary-pink) 100%);
+    --gradient-soft-tri: linear-gradient(180deg, #ebf5fb 0%, var(--white) 50%, #fdf2f8 100%);
+    --gradient-vibrant-tri: linear-gradient(45deg, #3498db 0%, #ffffff 50%, #e91e63 100%);
 
-    --gold-accent: #f59e0b;
-
-    /* Gradient Variants */
-    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
-    --gradient-soft: linear-gradient(135deg, var(--soft-blue) 0%, var(--soft-pink) 100%);
-    --gradient-blue: linear-gradient(135deg, var(--primary-blue) 0%, var(--deep-blue) 100%);
-    --gradient-pink: linear-gradient(135deg, var(--primary-pink) 0%, var(--deep-pink) 100%);
-
-    --gradient-romantic: var(--gradient-soft);
-    --gradient-love: linear-gradient(135deg, #ebf5fb 0%, #ffffff 50%, #fdf2f8 100%);
+    /* Functional Gradient Mappings */
+    --gradient-primary: var(--gradient-universal);
+    --gradient-soft: var(--gradient-soft-tri);
     --gradient-hero: radial-gradient(circle at center, var(--white) 0%, #f1f5f9 100%);
 
-    --shadow-soft: 0 10px 40px rgba(30, 41, 59, 0.05);
-    --shadow-strong: 0 20px 60px rgba(30, 41, 59, 0.1);
-    --shadow-glow: 0 0 30px rgba(52, 152, 219, 0.3);
+    /* Text Color - SOLID BLACK as requested */
+    --dark-text: var(--black);
+    --light-text: var(--black);
+
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 30px rgba(52, 152, 219, 0.2);
 
     --font-script: 'Dancing Script', cursive;
     --font-display: 'Playfair Display', serif;
@@ -636,14 +620,14 @@ body {
 }
 
 .music-btn {
-    background: var(--gradient-primary);
-    border: none;
+    background: var(--gradient-vibrant-tri);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 15px 25px;
     border-radius: 50px;
-    color: var(--white);
+    color: var(--dark-text);
     font-family: var(--font-body);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -651,6 +635,7 @@ body {
     box-shadow: var(--shadow-strong);
     transition: var(--transition-bounce);
 }
+
 
 .music-btn:hover {
     transform: scale(1.05);
@@ -1114,7 +1099,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: var(--gradient-hero);
+    background: var(--gradient-soft-tri);
     overflow: hidden;
 }
 
@@ -1336,7 +1321,7 @@ body {
 /* ===== Couple Photo Card Section ===== */
 .couple-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #fdf5f5 50%, #f5e6e8 100%);
+    background: var(--gradient-soft-tri);
     position: relative;
 }
 
@@ -1685,11 +1670,12 @@ body {
 
 .section-tag {
     display: inline-block;
-    background: var(--gradient-primary);
-    color: var(--white);
+    background: var(--gradient-vibrant-tri);
+    color: var(--black);
     padding: 8px 25px;
     border-radius: 50px;
     font-size: 0.9rem;
+    font-weight: 800;
     margin-bottom: 20px;
     box-shadow: var(--shadow-soft);
 }
@@ -1697,10 +1683,8 @@ body {
 .section-title {
     font-family: var(--font-script);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--black);
+    font-weight: 800;
     margin-bottom: 15px;
 }
 
@@ -1714,7 +1698,7 @@ body {
 /* ===== Lyrics Section ===== */
 .lyrics-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffffff 100%);
+    background: var(--gradient-soft-tri);
     position: relative;
     overflow: hidden;
 }
@@ -2130,7 +2114,7 @@ body {
 /* ===== Countdown Section ===== */
 .countdown-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #bde0fe 50%, #ffc8dd 100%);
+    background: var(--gradient-soft-tri);
     position: relative;
 }
 
@@ -2285,7 +2269,7 @@ body {
 
 /* ===== Footer ===== */
 .footer {
-    background: linear-gradient(135deg, #faf8f8 0%, #f5e6e8 50%, #fdf5f5 100%);
+    background: var(--gradient-vibrant-tri);
     padding: 60px 20px;
     text-align: center;
     border-top: 1px solid rgba(183, 110, 121, 0.1);
@@ -2775,14 +2759,15 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--gradient-soft);
+    background: var(--gradient-universal);
     padding: 10px 20px;
     border-radius: 50px;
-    color: var(--dark-text);
+    color: var(--black);
     font-family: var(--font-body);
+    font-weight: 700;
     font-size: 0.9rem;
     margin-top: 20px;
-    border: 1px solid var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: var(--shadow-soft);
     animation: cutePop 0.5s ease-out;
 }
